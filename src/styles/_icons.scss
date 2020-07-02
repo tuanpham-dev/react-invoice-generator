@@ -1,0 +1,50 @@
+.icon {
+  display: inline-block;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: 0;
+  border-radius: 50%;
+}
+
+.icon-absolute {
+  position: absolute;
+}
+
+.icon-remove {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 3px;
+    background-color: $color-white;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.icon-add {
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    left: 7px;
+    top: 3px;
+    background-color: $color-white;
+  }
+
+  &::after {
+    transform: rotate(-90deg);
+  }
+}

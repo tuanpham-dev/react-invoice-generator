@@ -1,0 +1,56 @@
+body {
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  color: #555;
+  background: $background-color;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: $placeholder-color;
+  opacity: 1;
+}
+
+input,
+textarea,
+select {
+  font-family: Nunito, sans-serif;
+  font-size: 14px;
+  color: #555;
+  background: transparent;
+  border-radius: 3px;
+  outline: 0;
+}
+
+select {
+  outline: 0;
+}
+
+textarea {
+  resize: vertical;
+  background: transparent;
+}
+
+button.link {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: $color-blue;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:focus {
+    outline: 1px dotted $color-cyan;
+    opacity: 1;
+  }
+}

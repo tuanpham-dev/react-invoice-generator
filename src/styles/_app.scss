@@ -1,0 +1,40 @@
+.app {
+  margin: 0 auto;
+  width: 700px;
+}
+
+.input,
+.span,
+.select {
+  display: inline-block;
+  width: 98%;
+  padding: 4px 12px 4px 0;
+  margin-bottom: 1px;
+  border: 1px dotted transparent;
+  transition: background 0.1s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.input,
+.select {
+  &:hover,
+  &:focus {
+    background: $color-yellow;
+  }
+
+  &:focus {
+    border-color: $color-cyan;
+  }
+
+  &.white {
+    &:hover,
+    &:focus {
+      color: inherit;
+    }
+  }
+}
+
+.invoice-wrapper {
+  background: #fff;
+  padding: 40px 35px;
+  box-shadow: 0 0 17px 0 rgba(16, 40, 73, 0.09);
+}
