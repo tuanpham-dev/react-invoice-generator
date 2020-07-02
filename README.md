@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Invoice Generator
+
+React Invoice Generator allows you quickly make invoices and safe them as PDF. [https://tuanpham-dev.github.io/react-invoice-generator](https://tuanpham-dev.github.io/react-invoice-generator)
+
+![react-invoice-generator](https://raw.githubusercontent.com/tuanpham-dev/react-invoice-generator/master/screenshot.png)
 
 ## Available Scripts
 

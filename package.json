@@ -2,6 +2,7 @@
   "name": "invoice-generator",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tuanpham-dev.github.io/react-invoice-generator/",
   "dependencies": {
     "@react-pdf/renderer": "^2.0.0-beta.6",
     "@testing-library/jest-dom": "^4.2.4",
@@ -21,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -40,6 +43,7 @@
   },
   "devDependencies": {
     "@types/react-textarea-autosize": "^4.3.5",
+    "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1"
   }
 }
