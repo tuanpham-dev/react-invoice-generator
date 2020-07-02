@@ -1,18 +1,20 @@
 import React, { FC } from 'react'
+import { Text } from '@react-pdf/renderer'
+import compose from '../styles/compose'
 
 interface Props {
   className?: string
   placeholder?: string
   value?: string
   onChange?: (value: string) => void
-  printMode?: boolean
+  pdfMode?: boolean
 }
 
-const EditableInput: FC<Props> = ({ className, placeholder, value, onChange, printMode }) => {
+const EditableInput: FC<Props> = ({ className, placeholder, value, onChange, pdfMode }) => {
   return (
     <>
-      {printMode ? (
-        <span className={'span ' + (className ? className : '')}>{value}</span>
+      {pdfMode ? (
+        <Text style={compose('span ' + (className ? className : ''))}>{value}</Text>
       ) : (
         <input
           type="text"

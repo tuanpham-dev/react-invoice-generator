@@ -1,3 +1,5 @@
+import { CSSProperties } from 'react'
+
 export interface ProductLine {
   description: string
   quantity: string
@@ -42,4 +44,8 @@ export interface Invoice {
   notes: string
   termLabel: string
   term: string
+}
+
+export interface CSSClasses {
+  [key: string]: CSSProperties
 }

@@ -1,12 +1,14 @@
 import React, { FC } from 'react'
 import TextareaAutosize from 'react-textarea-autosize'
+import { Text } from '@react-pdf/renderer'
+import compose from '../styles/compose'
 
 interface Props {
   className?: string
   placeholder?: string
   value?: string
   onChange?: (value: string) => void
-  printMode?: boolean
+  pdfMode?: boolean
   rows?: number
 }
 
@@ -15,13 +17,13 @@ const EditableTextarea: FC<Props> = ({
   placeholder,
   value,
   onChange,
-  printMode,
+  pdfMode,
   rows,
 }) => {
   return (
     <>
-      {printMode ? (
-        <span className={'span ' + (className ? className : '')}>{value}</span>
+      {pdfMode ? (
+        <Text style={compose('span ' + (className ? className : ''))}>{value}</Text>
       ) : (
         <TextareaAutosize
           minRows={rows || 1}

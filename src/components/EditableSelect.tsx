@@ -1,4 +1,6 @@
 import React, { FC, useState } from 'react'
+import { Text } from '@react-pdf/renderer'
+import compose from '../styles/compose'
 
 export interface SelectOption {
   value: string
@@ -11,7 +13,7 @@ interface Props {
   placeholder?: string
   value?: string
   onChange?: (value: string) => void
-  printMode?: boolean
+  pdfMode?: boolean
 }
 
 const EditableSelect: FC<Props> = ({
@@ -20,14 +22,14 @@ const EditableSelect: FC<Props> = ({
   placeholder,
   value,
   onChange,
-  printMode,
+  pdfMode,
 }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false)
 
   return (
     <>
-      {printMode ? (
-        <span className={'span ' + (className ? className : '')}>{value}</span>
+      {pdfMode ? (
+        <Text style={compose('span ' + (className ? className : ''))}>{value}</Text>
       ) : (
         <>
           {isEditing ? (
