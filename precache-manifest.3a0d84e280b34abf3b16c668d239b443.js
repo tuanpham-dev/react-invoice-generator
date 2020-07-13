@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7815354d78ea8b7ad955410dc7e6bc99",
+    "revision": "f3c28c0281b4fa1d8bfd1934a0f857ac",
     "url": "/react-invoice-generator/index.html"
   },
   {
