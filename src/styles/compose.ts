@@ -1,8 +1,8 @@
 import ReactPDF from '@react-pdf/renderer'
 import styles from './styles'
 
-const compose = (classes: string): ReactPDF.Style => {
-  const css: ReactPDF.Style = {}
+const compose = (classes: string): ReactPDF.Styles => {
+  const css: ReactPDF.Styles = {}
 
   const classesArray: string[] = classes.replace(/\s+/g, ' ').split(' ')
 
