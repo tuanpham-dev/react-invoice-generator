@@ -12,7 +12,9 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "date-fns": "^2.16.1",
     "react": "^16.13.1",
+    "react-datepicker": "^3.3.0",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "react-textarea-autosize": "^8.2.0",
@@ -42,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/react-datepicker": "^3.1.1",
     "@types/react-textarea-autosize": "^4.3.5",
     "gh-pages": "^3.1.0",
     "node-sass": "^4.14.1"
