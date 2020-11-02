@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/react-invoice-generator/static/css/main.bea38237.chunk.css",
-    "main.js": "/react-invoice-generator/static/js/main.d8b94b9f.chunk.js",
-    "main.js.map": "/react-invoice-generator/static/js/main.d8b94b9f.chunk.js.map",
+    "main.js": "/react-invoice-generator/static/js/main.e0b4afc4.chunk.js",
+    "main.js.map": "/react-invoice-generator/static/js/main.e0b4afc4.chunk.js.map",
     "runtime-main.js": "/react-invoice-generator/static/js/runtime-main.2b3c76a5.js",
     "runtime-main.js.map": "/react-invoice-generator/static/js/runtime-main.2b3c76a5.js.map",
     "static/css/2.08a81a33.chunk.css": "/react-invoice-generator/static/css/2.08a81a33.chunk.css",
-    "static/js/2.66db8b19.chunk.js": "/react-invoice-generator/static/js/2.66db8b19.chunk.js",
-    "static/js/2.66db8b19.chunk.js.map": "/react-invoice-generator/static/js/2.66db8b19.chunk.js.map",
+    "static/js/2.3267c2c8.chunk.js": "/react-invoice-generator/static/js/2.3267c2c8.chunk.js",
+    "static/js/2.3267c2c8.chunk.js.map": "/react-invoice-generator/static/js/2.3267c2c8.chunk.js.map",
     "index.html": "/react-invoice-generator/index.html",
-    "precache-manifest.763ef15b2cb8705448c7016758458ae7.js": "/react-invoice-generator/precache-manifest.763ef15b2cb8705448c7016758458ae7.js",
+    "precache-manifest.5cdcbddcd9267ea15a688d1462fa91af.js": "/react-invoice-generator/precache-manifest.5cdcbddcd9267ea15a688d1462fa91af.js",
     "service-worker.js": "/react-invoice-generator/service-worker.js",
     "static/css/2.08a81a33.chunk.css.map": "/react-invoice-generator/static/css/2.08a81a33.chunk.css.map",
     "static/css/main.bea38237.chunk.css.map": "/react-invoice-generator/static/css/main.bea38237.chunk.css.map",
-    "static/js/2.66db8b19.chunk.js.LICENSE.txt": "/react-invoice-generator/static/js/2.66db8b19.chunk.js.LICENSE.txt",
+    "static/js/2.3267c2c8.chunk.js.LICENSE.txt": "/react-invoice-generator/static/js/2.3267c2c8.chunk.js.LICENSE.txt",
     "static/media/main.scss": "/react-invoice-generator/static/media/download.5af81432.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.2b3c76a5.js",
     "static/css/2.08a81a33.chunk.css",
-    "static/js/2.66db8b19.chunk.js",
+    "static/js/2.3267c2c8.chunk.js",
     "static/css/main.bea38237.chunk.css",
-    "static/js/main.d8b94b9f.chunk.js"
+    "static/js/main.e0b4afc4.chunk.js"
   ]
 }
