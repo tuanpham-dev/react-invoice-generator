@@ -5,6 +5,7 @@ import EditableInput from './EditableInput'
 import EditableSelect from './EditableSelect'
 import EditableTextarea from './EditableTextarea'
 import EditableCalendarInput from './EditableCalendarInput'
+import EditableFileImage from './EditableFileImage'
 import countryList from '../data/countryList'
 import Document from './Document'
 import Page from './Page'
@@ -43,10 +44,15 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
     invoiceDueDate.setDate(invoiceDueDate.getDate() + 30)
   }
 
-  const handleChange = (name: keyof Invoice, value: string) => {
+  const handleChange = (name: keyof Invoice, value: string | number) => {
     if (name !== 'productLines') {
       const newInvoice = { ...invoice }
-      newInvoice[name] = value
+
+      if (name === 'logoWidth' && typeof value === 'number') {
+        newInvoice[name] = value
+      } else if (name !== 'logoWidth' && typeof value === 'string') {
+        newInvoice[name] = value
+      }
 
       setInvoice(newInvoice)
     }
@@ -130,6 +136,15 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-50" pdfMode={pdfMode}>
+            <EditableFileImage
+              className="logo"
+              placeholder="Your Logo"
+              value={invoice.logo}
+              width={invoice.logoWidth}
+              pdfMode={pdfMode}
+              onChangeImage={(value) => handleChange('logo', value)}
+              onChangeWidth={(value) => handleChange('logoWidth', value)}
+            />
             <EditableInput
               className="fs-20 bold"
               placeholder="Your Company"

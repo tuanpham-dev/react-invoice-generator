@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://tuanpham-dev.github.io/react-invoice-generator/",
   "dependencies": {
-    "@react-pdf/renderer": "^2.0.0-beta.6",
+    "@react-pdf/renderer": "^2.0.18",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -13,6 +13,7 @@
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "date-fns": "^2.16.1",
+    "rc-slider": "9.2.4",
     "react": "^16.13.1",
     "react-datepicker": "^3.3.0",
     "react-dom": "^16.13.1",
@@ -45,6 +46,7 @@
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
+    "@types/rc-slider": "^8.6.5",
     "@types/react-datepicker": "^3.1.1",
     "@types/react-textarea-autosize": "^4.3.5",
     "gh-pages": "^3.1.0",

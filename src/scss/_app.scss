@@ -62,3 +62,110 @@
     height: 100%;
   }
 }
+
+.image {
+  position: relative;
+  display: inline-block;
+}
+
+.image__file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.image__upload {
+  cursor: pointer;
+  font-size: 12px;
+  color: $placeholder-color;
+  background-color: $color-gray;
+  border: 2px dashed $placeholder-color;
+  display: block;
+  width: 100px;
+  height: 20px;
+  padding: 0;
+  outline: none;
+  transition: height 0.2s, font-size 0.2s;
+
+  &:focus,
+  &:hover {
+    height: 100px;
+    font-size: 14px;
+  }
+}
+
+.image__img {
+  display: block;
+}
+
+.image__change {
+  cursor: pointer;
+  font-size: 14px;
+  color: $placeholder-color;
+  background-color: $color-gray;
+  border: 2px dashed $placeholder-color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.2s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.95;
+  }
+}
+
+.image__edit,
+.image__remove {
+  background: #999 no-repeat center center;
+  background-size: 10px 10px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: -10px;
+  text-indent: -9999em;
+  opacity: 0;
+  transition: opacity 0.2s, background-color 0.2s;
+
+  &:hover,
+  &:focus {
+    background-color: #666;
+  }
+
+  .image:hover &,
+  .image:focus-within & {
+    opacity: 1;
+  }
+}
+
+.image__edit {
+  background-image: url('../images/resize.svg');
+  right: 20px;
+}
+
+.image__remove {
+  background-image: url('../images/remove.svg');
+  right: -10px;
+}
+
+.image__width-wrapper {
+  background-color: $color-white;
+  padding: 10px 20px 25px;
+  position: absolute;
+  width: 270px;
+  top: -70px;
+  left: 0;
+  border-radius: 4px;
+  box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.15);
+}
