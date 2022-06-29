@@ -14,6 +14,14 @@
   width: 100% !important;
 }
 
+.w-75 {
+  width: 75%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
 .w-50 {
   width: 50%;
 }
@@ -38,6 +46,14 @@
   width: 48%;
 }
 
+.w-30 {
+  width: 30%;
+}
+
+.w-25 {
+  width: 25%;
+}
+
 .w-17 {
   width: 17%;
 }
@@ -46,9 +62,18 @@
   width: 18%;
 }
 
+.w-10 {
+  width: 10%;
+}
+
+.w-5 {
+  width: 5%;
+}
+
 .row {
   position: relative;
-  border-bottom: 1px solid $color-gray;
+  border: 1px solid $color-theme-light;
+  border-top: none;
 }
 
 .row__remove {
@@ -64,4 +89,8 @@
   .row:focus-within & {
     opacity: 1;
   }
+}
+
+.bd-t {
+  border-top: 1px solid $color-theme-dark;
 }

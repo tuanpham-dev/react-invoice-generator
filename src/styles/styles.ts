@@ -4,6 +4,8 @@ const colorDark = '#222'
 const colorDark2 = '#666'
 const colorGray = '#e3e3e3'
 const colorWhite = '#fff'
+const colorThemeDark = '#6539C0'
+const colorThemeLight = '#EFEBF9'
 
 const styles: CSSClasses = {
   dark: {
@@ -20,6 +22,26 @@ const styles: CSSClasses = {
 
   'bg-gray': {
     backgroundColor: colorGray,
+  },
+
+  'bg-theme-dark': {
+    backgroundColor: colorThemeDark,
+  },
+
+  'bg-theme-light': {
+    backgroundColor: colorThemeLight,
+  },
+
+  'theme-dark': {
+    color: colorThemeDark,
+  },
+
+  'theme-light': {
+    color: colorThemeLight,
+  },
+
+  'rad-sm': {
+    borderRadius: '4px',
   },
 
   flex: {
@@ -39,6 +61,14 @@ const styles: CSSClasses = {
 
   'w-100': {
     width: '100%',
+  },
+
+  'w-75': {
+    width: '75%',
+  },
+
+  'w-70': {
+    width: '70%',
   },
 
   'w-50': {
@@ -65,6 +95,14 @@ const styles: CSSClasses = {
     width: '48%',
   },
 
+  'w-30': {
+    width: '30%',
+  },
+
+  'w-25': {
+    width: '25%',
+  },
+
   'w-17': {
     width: '17%',
   },
@@ -73,8 +111,21 @@ const styles: CSSClasses = {
     width: '18%',
   },
 
+  'w-10': {
+    width: '10%',
+  },
+
+  'w-5': {
+    width: '5%',
+  },
+
+  'bd-t': {
+    borderTop: `1px solid ${colorThemeLight}`,
+  },
+
   row: {
-    borderBottom: `1px solid ${colorGray}`,
+    border: `1px solid ${colorThemeLight}`,
+    borderTop: `0px`,
   },
 
   'mt-40': {
@@ -105,8 +156,36 @@ const styles: CSSClasses = {
     padding: '5px',
   },
 
+  'pl-5': {
+    paddingLeft: '5px',
+  },
+
+  'p-10': {
+    padding: '10px',
+  },
+
+  'pt-10': {
+    paddingTop: '10px',
+  },
+
+  'pt-20': {
+    paddingTop: '20px',
+  },
+
+  'pt-30': {
+    paddingTop: '30px',
+  },
+
   'pb-10': {
     paddingBottom: '10px',
+  },
+
+  'pb-20': {
+    paddingBottom: '20px',
+  },
+
+  'pb-30': {
+    paddingBottom: '30px',
   },
 
   right: {
@@ -115,6 +194,14 @@ const styles: CSSClasses = {
 
   bold: {
     fontWeight: 'bold',
+  },
+
+  'fs-14': {
+    fontSize: '14px',
+  },
+
+  'fs-16': {
+    fontSize: '16px',
   },
 
   'fs-20': {
@@ -126,7 +213,7 @@ const styles: CSSClasses = {
   },
 
   page: {
-    fontFamily: 'Nunito',
+    fontFamily: 'Outfit',
     fontSize: '13px',
     color: '#555',
     padding: '40px 35px',
