@@ -323,7 +323,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
         <View className="mt-20 bg-theme-dark flex" pdfMode={pdfMode}>
           <View className="w-5 p-4-8" pdfMode={pdfMode}>
-            <Text pdfMode={pdfMode}></Text>
+            <Text></Text>
           </View>
           <View className="w-48 p-4-8" pdfMode={pdfMode}>
             <EditableInput
@@ -374,7 +374,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           ) : (
             <View key={i} className={`row flex ${rowColor}`} pdfMode={pdfMode}>
               <View className="w-5 p-4-8" pdfMode={pdfMode}>
-                <Text>{(i+1)+"."}</Text>
+                <Text key={i} pdfMode={pdfMode}>{(i+1)+"."}</Text>
               </View>
               <View className="w-48 p-4-8" pdfMode={pdfMode}>
                 <EditableTextarea
@@ -431,12 +431,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-60" pdfMode={pdfMode}>
             <View className="mt-10 flex" pdfMode={pdfMode}>
-              {/* <EditableInput
-                  className="bold dark span"
-                  value={invoice.totalWordsLabel}
-                  onChange={(value) => handleChange('totalWordsLabel', value)}
-                  pdfMode={pdfMode}
-                /> */}
               <Text className='' pdfMode={pdfMode}>{invoice.totalWordsLabel + '' + numInWords(
                   (typeof subTotal !== 'undefined'
                   ? subTotal
@@ -454,34 +448,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             </View>
           </View>
           <View className="w-40" pdfMode={pdfMode}>
-            {/* <View className="flex" pdfMode={pdfMode}>
-              <View className="w-50 p-5" pdfMode={pdfMode}>
-                <EditableInput
-                  value={invoice.subTotalLabel}
-                  onChange={(value) => handleChange('subTotalLabel', value)}
-                  pdfMode={pdfMode}
-                />
-              </View>
-              <View className="w-50 p-5" pdfMode={pdfMode}>
-                <Text className="right bold dark" pdfMode={pdfMode}>
-                  {subTotal?.toFixed(2)}
-                </Text>
-              </View>
-            </View> */}
-            {/* <View className="flex" pdfMode={pdfMode}>
-              <View className="w-50 p-5" pdfMode={pdfMode}>
-                <EditableInput
-                  value={invoice.taxLabel}
-                  onChange={(value) => handleChange('taxLabel', value)}
-                  pdfMode={pdfMode}
-                />
-              </View>
-              <View className="w-50 p-5" pdfMode={pdfMode}>
-                <Text className="right bold dark" pdfMode={pdfMode}>
-                  {saleTax?.toFixed(2)}
-                </Text>
-              </View>
-            </View> */}
             <View className="flex p-5" pdfMode={pdfMode}>
               <View className="w-40 p-5 bd-t" pdfMode={pdfMode}>
                 <EditableInput
@@ -610,12 +576,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           
         </View>
         <View className="mt-20" pdfMode={pdfMode}>
-          {/* <EditableInput
-            className="bold w-100"
-            value={invoice.notesLabel}
-            onChange={(value) => handleChange('notesLabel', value)}
-            pdfMode={pdfMode}
-          /> */}
           <EditableTextarea
             className="w-100 center"
             rows={2}
