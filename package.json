@@ -2,7 +2,7 @@
   "name": "invoice-generator",
   "version": "0.2.1",
   "private": true,
-  "homepage": "https://sriram10.github.io/react-invoice-generator/",
+  "homepage": "https://sriram10.github.io/invoice-generator/",
   "dependencies": {
     "@react-pdf/renderer": "^2.0.18",
     "@testing-library/jest-dom": "^4.2.4",
