@@ -1,6 +1,6 @@
 {
   "name": "invoice-generator",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://sriram10.github.io/invoice-generator/",
   "dependencies": {
