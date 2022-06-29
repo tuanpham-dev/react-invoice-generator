@@ -2,11 +2,12 @@ name: Build & deploy
 
 on:
   push:
-    branches:
-      - template/v1
+    branches: ["template/v1"]
   pull_request:
-    branches:
-      - template/v1
+    branches: ["template/v1"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
 
 jobs:
   build:
