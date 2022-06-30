@@ -10,17 +10,17 @@ export const initialProductLine: ProductLine = {
 
 export const initialInvoice: Invoice = {
   logo: require('../images/default-logo.png'),
-  logoWidth: 110,
-  title: 'Invoice',
+  logoWidth: 90,
+  title: 'Tax Invoice',
   companyName: 'Pentafox Technologies Private Limited',
   name: '',
   companyAddress: '59, Journalist Colony, Thiruvanmiyur, Chennai',
   companyAddress2: 'Tamil Nadu, India - 600041',
   companyCountry: 'India',
-  companyGstin: '-',
-  companyPan: '-',
-  companyEmail: '-',
-  companyPhone: '-',
+  companyGstin: 'GSTIN: 33AAICP5142K1ZC',
+  companyPan: 'PAN: AAICP5142K',
+  companyEmail: 'Email: hello@pentafox.in',
+  companyPhone: 'Phone: +91 98404 11735',
   billBy: 'Billed By',
   billTo: 'Billed To',
   clientName: '',
@@ -60,9 +60,9 @@ export const initialInvoice: Invoice = {
   totalWordsLabel: 'Total (in Words): ',
   currency: '₹',
   notesLabel: 'Bank Details',
-  notes: 'For any enquiry, reach out via email at YOUR_EMAIL, call on +91 98888 98888',
+  notes: 'For any enquiry, reach out via email at hello@pentafox.in, call on +91 98404 11735',
   termLabel: 'Terms & Conditions',
-  term: 'Please make the payment by the due date.',
+  term: '1. Please pay within 30 days from the date of invoice, overdue interest @ 14% will be charged on delayed payments. \n2. Please quote invoice number when you remit the funds.',
 
   accountNameLabel: 'Account name',
   accountNoLabel: 'Account No.',
@@ -70,8 +70,8 @@ export const initialInvoice: Invoice = {
   bankIfscLabel: 'IFSC',
 
   bankLabel: 'Bank Details',
-  accountName: '- ',
-  accountNo: '- ',
-  bankName: '- ',
-  bankIfsc: '- '
+  accountName: 'Pentafox Technologies Pvt Ltd',
+  accountNo: '259840411735',
+  bankName: 'Indusind bank',
+  bankIfsc: 'INDB0000007'
 }

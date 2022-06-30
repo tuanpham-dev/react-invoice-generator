@@ -64,3 +64,30 @@ h1 {
   margin-top: 0;
   margin-bottom: 30px;
 }
+
+.login {
+  &__container {
+    background-color: $color-white;
+    margin: 0 auto;
+    max-width: 360px;
+    padding: 30px;
+  }
+  input {
+    margin-bottom: 10px;
+    border: 1px solid $color-theme-light;
+  }
+
+  button {
+    background-color: $color-theme-dark;
+    color: $color-white;
+    border-color: transparent;
+  }
+  
+  input, button {
+    padding: 10px;
+    border-radius: 4px;
+    min-width: 200px;
+    display: block;
+    margin: 10px auto;
+  }
+}

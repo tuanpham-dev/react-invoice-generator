@@ -1,0 +1,51 @@
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+} from "firebase/auth";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBJt-rrVcZhgUIPRKznxYOJVaMB-5zb_dI",
+  authDomain: "invoice-app-github.firebaseapp.com",
+  projectId: "invoice-app-github",
+  storageBucket: "invoice-app-github.appspot.com",
+  messagingSenderId: "384965562729",
+  appId: "1:384965562729:web:7159caf6fdc220a7d76df8",
+  measurementId: "G-3C5SNEXL3V"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const authFB = getAuth(app);
+
+const logInWithEmailAndPassword = async (email, password) => {
+  try {
+    await signInWithEmailAndPassword(authFB, email, password);
+  } catch (err) {
+    console.error(err);
+    alert(err.message);
+  }
+};
+
+const logout = () => {
+  signOut(authFB);
+};
+
+export {
+  authFB,
+  analytics,
+  logInWithEmailAndPassword,
+  logout,
+}

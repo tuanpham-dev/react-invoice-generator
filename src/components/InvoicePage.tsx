@@ -507,7 +507,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 pdfMode={pdfMode}
               />
             </View>
-            <View className="w-80" pdfMode={pdfMode}>
+            <View className="flex-1" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
                 value={invoice.accountName}
@@ -526,7 +526,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 pdfMode={pdfMode}
               />
             </View>
-            <View className="w-80" pdfMode={pdfMode}>
+            <View className="flex-1" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
                 value={invoice.bankName}
@@ -545,7 +545,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 pdfMode={pdfMode}
               />
             </View>
-            <View className="w-80" pdfMode={pdfMode}>
+            <View className="flex-1" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
                 value={invoice.accountNo}
@@ -564,7 +564,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 pdfMode={pdfMode}
               />
             </View>
-            <View className="w-80" pdfMode={pdfMode}>
+            <View className="flex-1" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
                 value={invoice.bankIfsc}
