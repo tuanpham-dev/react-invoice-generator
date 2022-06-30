@@ -325,7 +325,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           <View className="w-5 p-4-8" pdfMode={pdfMode}>
             <Text></Text>
           </View>
-          <View className="w-48 p-4-8" pdfMode={pdfMode}>
+          <View className="w-40 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold"
               value={invoice.productLineDescription}
@@ -333,7 +333,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-20 p-4-8" pdfMode={pdfMode}>
+          <View className="w-25 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold center"
               value={invoice.productLineDuration}
@@ -341,7 +341,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-10 p-4-8" pdfMode={pdfMode}>
+          <View className="w-10 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold center"
               value={invoice.productLineHours}
@@ -349,7 +349,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-10 p-4-8" pdfMode={pdfMode}>
+          <View className="w-10 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold center"
               value={invoice.productLineQuantityRate}
@@ -357,7 +357,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-17 p-4-8" pdfMode={pdfMode}>
+          <View className="w-10 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold right"
               value={invoice.productLineQuantityAmount}
@@ -376,7 +376,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               <View className="w-5 p-4-8" pdfMode={pdfMode}>
                 <Text key={i} pdfMode={pdfMode}>{(i+1)+"."}</Text>
               </View>
-              <View className="w-48 p-4-8" pdfMode={pdfMode}>
+              <View className="w-40 ptb-4" pdfMode={pdfMode}>
                 <EditableTextarea
                   className="dark"
                   placeholder="Enter item name/description"
@@ -385,7 +385,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-20 p-4-8" pdfMode={pdfMode}>
+              <View className="w-25 p-4-8" pdfMode={pdfMode}>
                 <EditableTextarea
                   className="dark center"
                   value={productLine.duration}
@@ -409,7 +409,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 ptb-4" pdfMode={pdfMode}>
+              <View className="w-10 ptb-4" pdfMode={pdfMode}>
                 <Text className="dark right" pdfMode={pdfMode}>
                   {calculateAmount(productLine.hours, productLine.rate)}
                 </Text>
