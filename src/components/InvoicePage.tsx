@@ -61,7 +61,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
       if (i === index) {
         const newProductLine = { ...productLine }
 
-        if (name === 'description') {
+        if (name === 'description' || name === 'duration') {
           newProductLine[name] = value
         } else {
           if (
@@ -321,7 +321,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
           </View>
         </View>
 
-        <View className="mt-20 bg-theme-dark flex" pdfMode={pdfMode}>
+        <View className="mt-20 bg-theme-dark flex rad-sm-t" pdfMode={pdfMode}>
           <View className="w-5 p-4-8" pdfMode={pdfMode}>
             <Text></Text>
           </View>
@@ -333,31 +333,31 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-17 p-4-8" pdfMode={pdfMode}>
+          <View className="w-20 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="white bold center"
               value={invoice.productLineDuration}
               onChange={(value) => handleChange('productLineDuration', value)}
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-17 p-4-8" pdfMode={pdfMode}>
+          <View className="w-10 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="white bold center"
               value={invoice.productLineHours}
               onChange={(value) => handleChange('productLineHours', value)}
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-18 p-4-8" pdfMode={pdfMode}>
+          <View className="w-10 p-4-8" pdfMode={pdfMode}>
             <EditableInput
-              className="white bold right"
+              className="white bold center"
               value={invoice.productLineQuantityRate}
               onChange={(value) => handleChange('productLineQuantityRate', value)}
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-18 p-4-8" pdfMode={pdfMode}>
+          <View className="w-17 p-4-8" pdfMode={pdfMode}>
             <EditableInput
               className="white bold right"
               value={invoice.productLineQuantityAmount}
@@ -385,31 +385,31 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 p-4-8" pdfMode={pdfMode}>
-                <EditableInput
-                  className="dark right"
+              <View className="w-20 p-4-8" pdfMode={pdfMode}>
+                <EditableTextarea
+                  className="dark center"
                   value={productLine.duration}
                   onChange={(value) => handleProductLineChange(i, 'duration', value)}
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 p-4-8" pdfMode={pdfMode}>
+              <View className="w-10 ptb-4" pdfMode={pdfMode}>
                 <EditableInput
-                  className="dark right"
+                  className="dark center"
                   value={productLine.hours}
                   onChange={(value) => handleProductLineChange(i, 'hours', value)}
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-17 p-4-8" pdfMode={pdfMode}>
+              <View className="w-10 ptb-4" pdfMode={pdfMode}>
                 <EditableInput
-                  className="dark right"
+                  className="dark center"
                   value={productLine.rate}
                   onChange={(value) => handleProductLineChange(i, 'rate', value)}
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-18 p-4-8" pdfMode={pdfMode}>
+              <View className="w-17 ptb-4" pdfMode={pdfMode}>
                 <Text className="dark right" pdfMode={pdfMode}>
                   {calculateAmount(productLine.hours, productLine.rate)}
                 </Text>
@@ -438,7 +438,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                 ).toFixed(0)
               )?.toUpperCase()}</Text>
             </View>
-            <View className="mt-10" pdfMode={pdfMode}>
+            <View className="mt-10 donot-print" pdfMode={pdfMode}>
               {!pdfMode && (
                 <button className="link" onClick={handleAdd}>
                   <span className="icon icon-add bg-green mr-10"></span>
@@ -498,7 +498,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             pdfMode={pdfMode}
           />
 
-          <View className="flex pl-5" pdfMode={pdfMode}>
+          <View className="flex" pdfMode={pdfMode}>
             <View className="w-17" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
@@ -517,7 +517,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             </View>
           </View>
 
-          <View className="flex pl-5" pdfMode={pdfMode}>
+          <View className="flex" pdfMode={pdfMode}>
             <View className="w-17" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
@@ -536,7 +536,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             </View>
           </View>
 
-          <View className="flex pl-5" pdfMode={pdfMode}>
+          <View className="flex" pdfMode={pdfMode}>
             <View className="w-17" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
@@ -555,7 +555,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
             </View>
           </View>
 
-          <View className="flex pl-5" pdfMode={pdfMode}>
+          <View className="flex" pdfMode={pdfMode}>
             <View className="w-17" pdfMode={pdfMode}>
               <EditableInput
                 className="bold left"
