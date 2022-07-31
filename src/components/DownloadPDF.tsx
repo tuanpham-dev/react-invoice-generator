@@ -20,15 +20,27 @@ const Download: FC<Props> = ({ data }) => {
     return () => clearTimeout(timeout)
   }, [data])
 
+  const printPage = () => {
+    window?.print();
+  }
+
   return (
     <div className={'download-pdf ' + (!show ? 'loading' : '')} title="Save PDF">
       {show && (
+        <a onClick={() => printPage()} />
+        // <PDFDownloadLink
+        //   document={<InvoicePage pdfMode={true} data={data} />}
+        //   fileName={`${data.invoiceTitle ? data.invoiceTitle.toLowerCase() : 'invoice'}.pdf`}
+        //   aria-label="Save PDF"
+        // ></PDFDownloadLink>
+      )}
+      {/* {show && (
         <PDFDownloadLink
           document={<InvoicePage pdfMode={true} data={data} />}
           fileName={`${data.invoiceTitle ? data.invoiceTitle.toLowerCase() : 'invoice'}.pdf`}
           aria-label="Save PDF"
         ></PDFDownloadLink>
-      )}
+      )} */}
     </div>
   )
 }
