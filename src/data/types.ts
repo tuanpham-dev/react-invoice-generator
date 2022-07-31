@@ -52,6 +52,13 @@ export interface Invoice {
   subTotalLabel: string
   taxLabel: string
 
+  igstLabel: string,
+  cgstLabel: string,
+  sgstLabel: string,
+  igst: string,
+  cgst: string,
+  sgst: string,
+
   totalLabel: string
   totalWordsLabel: string
   currency: string

@@ -24,12 +24,25 @@ Font.register({
 interface Props {
   data?: Invoice
   pdfMode?: boolean
+  taxOptions?: {
+    igst: boolean
+    cgst: boolean
+    sgst: boolean
+  },
+  currency?: {
+    symbol: string
+    code: string
+    label?: string
+    text?: string
+  }
 }
 
-const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
+const InvoicePage: FC<Props> = ({ data, pdfMode, taxOptions, currency }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
-  const [saleTax, setSaleTax] = useState<number>()
+  const [igst, setIgst] = useState<number>(0)
+  const [cgst, setCgst] = useState<number>(0)
+  const [sgst, setSgst] = useState<number>(0)
 
   const dateFormat = 'MMM dd, yyyy'
   const invoiceDate = invoice.invoiceDate !== '' ? new Date(invoice.invoiceDate) : new Date()
@@ -99,7 +112,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
   const calculateAmount = (hours: string, rate: string) => {
     const hoursNumber = parseInt(hours, 10)
-    const rateNumber = parseInt(rate, 10)
+    const rateNumber = parseInt(rate.replace(/,/g, ''), 10)
     const amount = hoursNumber && rateNumber ? hoursNumber * rateNumber : 0
 
     return formatCurrency(amount)
@@ -120,12 +133,42 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
   }, [invoice.productLines])
 
   useEffect(() => {
-    const match = invoice.taxLabel.match(/(\d+)%/)
-    const taxRate = match ? parseFloat(match[1]) : 0
-    const saleTax = subTotal ? (subTotal * taxRate) / 100 : 0
+    if (taxOptions?.igst) {
+      const matchIGST = invoice.igstLabel.match(/(\d+)%/)
+      const taxRateIGST = matchIGST ? parseFloat(matchIGST[1]) : 0
+      const igst = subTotal ? (subTotal * taxRateIGST) / 100 : 0
+      setIgst(igst);
+    } else {
+      setIgst(0)
+    }
 
-    setSaleTax(saleTax)
-  }, [subTotal, invoice.taxLabel])
+    if (taxOptions?.cgst) {
+      const matchCGST = invoice.cgstLabel.match(/(\d+)%/)
+      const taxRateCGST = matchCGST ? parseFloat(matchCGST[1]) : 0
+      const cgst = subTotal ? (subTotal * taxRateCGST) / 100 : 0
+      setCgst(cgst);
+    } else {
+      setCgst(0)
+    }
+
+    if(taxOptions?.sgst) {
+      const matchSGST = invoice.sgstLabel.match(/(\d+)%/)
+      const taxRateSGST = matchSGST ? parseFloat(matchSGST[1]) : 0
+      const sgst = subTotal ? (subTotal * taxRateSGST) / 100 : 0
+      setSgst(sgst);
+    } else {
+      setSgst(0)
+    }
+
+  }, [subTotal, invoice.igstLabel, invoice.cgstLabel, invoice.sgstLabel, taxOptions])
+
+  // useEffect(() => {
+  //   const match = invoice.taxLabel.match(/(\d+)%/)
+  //   const taxRate = match ? parseFloat(match[1]) : 0
+  //   const saleTax = subTotal ? (subTotal * taxRate) / 100 : 0
+
+  //   setSaleTax(saleTax)
+  // }, [subTotal, invoice.taxLabel])
 
   return (
     <Document pdfMode={pdfMode}>
@@ -281,6 +324,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
             <EditableInput
+              className='fs-14 bold'
               placeholder="Your Client's Name"
               value={invoice.clientName}
               onChange={(value) => handleChange('clientName', value)}
@@ -333,7 +377,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-25 ptb-4" pdfMode={pdfMode}>
+          <View className="w-20 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold center"
               value={invoice.productLineDuration}
@@ -349,7 +393,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               pdfMode={pdfMode}
             />
           </View>
-          <View className="w-10 ptb-4" pdfMode={pdfMode}>
+          <View className="w-17 ptb-4" pdfMode={pdfMode}>
             <EditableInput
               className="white bold center"
               value={invoice.productLineQuantityRate}
@@ -385,7 +429,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-25 p-4-8" pdfMode={pdfMode}>
+              <View className="w-20 p-4-8" pdfMode={pdfMode}>
                 <EditableTextarea
                   className="dark center"
                   value={productLine.duration}
@@ -401,11 +445,11 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-10 ptb-4" pdfMode={pdfMode}>
+              <View className="w-17 ptb-4" pdfMode={pdfMode}>
                 <EditableInput
                   className="dark center"
-                  value={productLine.rate}
-                  onChange={(value) => handleProductLineChange(i, 'rate', value)}
+                  value={formatCurrency(productLine.rate)}
+                  onChange={(value) => handleProductLineChange(i, 'rate', value.replace(/,/g, ''))}
                   pdfMode={pdfMode}
                 />
               </View>
@@ -430,14 +474,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-60" pdfMode={pdfMode}>
-            <View className="mt-10 flex" pdfMode={pdfMode}>
-              <Text className='' pdfMode={pdfMode}>{invoice.totalWordsLabel + '' + numInWords(
-                  (typeof subTotal !== 'undefined'
-                  ? subTotal
-                  : 0
-                ).toFixed(0)
-              )?.toUpperCase()}</Text>
-            </View>
             <View className="mt-10 donot-print" pdfMode={pdfMode}>
               {!pdfMode && (
                 <button className="link" onClick={handleAdd}>
@@ -447,9 +483,160 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
               )}
             </View>
           </View>
+        </View>
+
+        {
+          (taxOptions?.igst || taxOptions?.cgst || taxOptions?.sgst) ? (
+            <View className="flex" pdfMode={pdfMode}>
+              <View className="w-60" pdfMode={pdfMode}></View>
+              <View className="w-40" pdfMode={pdfMode}>
+                <View className="flex p-5" pdfMode={pdfMode}>
+                  <View className="w-40" pdfMode={pdfMode}>
+                    <EditableInput
+                      className="bold right"
+                      value={invoice.subTotalLabel}
+                      onChange={(value) => handleChange('totalLabel', value)}
+                      pdfMode={pdfMode}
+                    />
+                  </View>
+                  <View className="w-60 flex" pdfMode={pdfMode}>
+                    {/* <EditableInput
+                      className="dark bold right"
+                      value={invoice.currency}
+                      onChange={(value) => handleChange('currency', value)}
+                      pdfMode={pdfMode}
+                    /> */}
+                    <Text className="bold dark right" pdfMode={pdfMode}>
+                      {`${currency?.symbol}` + ' '+ formatCurrency(typeof subTotal !== 'undefined'
+                        ? subTotal
+                        : 0
+                      )}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : null
+        }
+
+
+        {
+          taxOptions?.igst ? (
+            <View className="flex" pdfMode={pdfMode}>
+              <View className="w-60" pdfMode={pdfMode}></View>
+              <View className="w-40" pdfMode={pdfMode}>
+                <View className="flex p-5" pdfMode={pdfMode}>
+                  <View className="w-40" pdfMode={pdfMode}>
+                    <EditableInput
+                      className="bold right"
+                      value={invoice.igstLabel}
+                      onChange={(value) => handleChange('igstLabel', value)}
+                      pdfMode={pdfMode}
+                    />
+                  </View>
+                  <View className="w-60 flex" pdfMode={pdfMode}>
+                    {/* <EditableInput
+                      className="dark bold right"
+                      value={currency?.symbol}
+                      onChange={(value) => handleChange('currency', value)}
+                      pdfMode={pdfMode}
+                    /> */}
+                    <Text className="bold dark right" pdfMode={pdfMode}>
+                      {currency?.symbol + ' '+ formatCurrency(typeof igst !== 'undefined'
+                        ? igst
+                        : 0
+                      )}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : null
+        }
+
+        {
+          taxOptions?.cgst ? (
+            <View className="flex" pdfMode={pdfMode}>
+              <View className="w-60" pdfMode={pdfMode}></View>
+              <View className="w-40" pdfMode={pdfMode}>
+                <View className="flex p-5" pdfMode={pdfMode}>
+                  <View className="w-40" pdfMode={pdfMode}>
+                    <EditableInput
+                      className="bold right"
+                      value={invoice.cgstLabel}
+                      onChange={(value) => handleChange('cgstLabel', value)}
+                      pdfMode={pdfMode}
+                    />
+                  </View>
+                  <View className="w-60 flex" pdfMode={pdfMode}>
+                    {/* <EditableInput
+                      className="dark bold right"
+                      value={currency?.symbol}
+                      onChange={(value) => handleChange('currency', value)}
+                      pdfMode={pdfMode}
+                    /> */}
+                    <Text className="bold dark right" pdfMode={pdfMode}>
+                      {currency?.symbol + ' '+ formatCurrency(typeof cgst !== 'undefined'
+                        ? cgst
+                        : 0
+                      )}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : null
+        }
+
+        {
+          taxOptions?.sgst ? (
+            <View className="flex" pdfMode={pdfMode}>
+              <View className="w-60" pdfMode={pdfMode}></View>
+              <View className="w-40" pdfMode={pdfMode}>
+                <View className="flex p-5" pdfMode={pdfMode}>
+                  <View className="w-40" pdfMode={pdfMode}>
+                    <EditableInput
+                      className="bold right"
+                      value={invoice.sgstLabel}
+                      onChange={(value) => handleChange('sgstLabel', value)}
+                      pdfMode={pdfMode}
+                    />
+                  </View>
+                  <View className="w-60 flex" pdfMode={pdfMode}>
+                    {/* <EditableInput
+                      className="dark bold right"
+                      value={currency?.symbol}
+                      onChange={(value) => handleChange('currency', value)}
+                      pdfMode={pdfMode}
+                    /> */}
+                    <Text className="bold dark right" pdfMode={pdfMode}>
+                      {currency?.symbol + ' '+ formatCurrency(typeof sgst !== 'undefined'
+                        ? sgst
+                        : 0
+                      )}
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          ) : null
+        }
+        
+        <View className="flex" pdfMode={pdfMode}>
+          <View className="w-60" pdfMode={pdfMode}>
+            <View className="mt-10 flex" pdfMode={pdfMode}>
+              <Text className='' pdfMode={pdfMode}>{invoice.totalWordsLabel + '' + numInWords(
+                  (typeof subTotal !== 'undefined'
+                  ? subTotal + igst + cgst + sgst
+                  : 0
+                ).toFixed(0),
+                currency?.text
+              )?.toUpperCase()}</Text>
+            </View>
+          </View>
           <View className="w-40" pdfMode={pdfMode}>
             <View className="flex p-5" pdfMode={pdfMode}>
-              <View className="w-40 p-5 bd-t" pdfMode={pdfMode}>
+              <View className="w-40 bd-t" pdfMode={pdfMode}>
                 <EditableInput
                   className="bold right"
                   value={invoice.totalLabel}
@@ -457,23 +644,25 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
                   pdfMode={pdfMode}
                 />
               </View>
-              <View className="w-60 p-5 bd-t flex" pdfMode={pdfMode}>
-                <EditableInput
+              <View className="w-60 bd-t flex" pdfMode={pdfMode}>
+                {/* <EditableInput
                   className="dark bold right"
-                  value={invoice.currency}
+                  value={`${currency?.code} ${currency?.symbol}`}
                   onChange={(value) => handleChange('currency', value)}
                   pdfMode={pdfMode}
-                />
-                <Text className="right bold dark w-auto right" pdfMode={pdfMode}>
-                  {formatCurrency(typeof subTotal !== 'undefined'
-                    ? subTotal
-                    : 0
+                /> */}
+                <Text className="bold dark right" pdfMode={pdfMode}>
+                  {`${currency?.code} ${currency?.symbol}` + ' '+ formatCurrency((typeof subTotal !== 'undefined'
+                      ? subTotal + igst + cgst + sgst
+                      : 0
+                    ).toFixed(0)
                   )}
                 </Text>
               </View>
             </View>
           </View>
         </View>
+
 
         <View className="mt-20" pdfMode={pdfMode}>
           <EditableInput
