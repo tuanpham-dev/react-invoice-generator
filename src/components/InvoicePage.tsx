@@ -26,9 +26,10 @@ Font.register({
 interface Props {
   data?: Invoice
   pdfMode?: boolean
+  onChange?: (invoice: Invoice) => void
 }
 
-const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
+const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
   const [saleTax, setSaleTax] = useState<number>()
@@ -128,6 +129,12 @@ const InvoicePage: FC<Props> = ({ data, pdfMode }) => {
 
     setSaleTax(saleTax)
   }, [subTotal, invoice.taxLabel])
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(invoice)
+    }
+  }, [onChange, invoice])
 
   return (
     <Document pdfMode={pdfMode}>
