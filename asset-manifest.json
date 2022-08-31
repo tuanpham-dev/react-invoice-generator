@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-invoice-generator/static/css/main.1a8caee2.chunk.css",
-    "main.js": "/react-invoice-generator/static/js/main.0500c8f1.chunk.js",
-    "main.js.map": "/react-invoice-generator/static/js/main.0500c8f1.chunk.js.map",
+    "main.js": "/react-invoice-generator/static/js/main.34d1fa92.chunk.js",
+    "main.js.map": "/react-invoice-generator/static/js/main.34d1fa92.chunk.js.map",
     "runtime-main.js": "/react-invoice-generator/static/js/runtime-main.33c79cdc.js",
     "runtime-main.js.map": "/react-invoice-generator/static/js/runtime-main.33c79cdc.js.map",
     "static/css/2.0d77bc6e.chunk.css": "/react-invoice-generator/static/css/2.0d77bc6e.chunk.css",
     "static/js/2.c4d5f900.chunk.js": "/react-invoice-generator/static/js/2.c4d5f900.chunk.js",
     "static/js/2.c4d5f900.chunk.js.map": "/react-invoice-generator/static/js/2.c4d5f900.chunk.js.map",
     "index.html": "/react-invoice-generator/index.html",
-    "precache-manifest.22303faf8480f44fe4e0c86e847db62d.js": "/react-invoice-generator/precache-manifest.22303faf8480f44fe4e0c86e847db62d.js",
+    "precache-manifest.eb41799f8a204d2335d03a8f3860dc31.js": "/react-invoice-generator/precache-manifest.eb41799f8a204d2335d03a8f3860dc31.js",
     "service-worker.js": "/react-invoice-generator/service-worker.js",
     "static/css/2.0d77bc6e.chunk.css.map": "/react-invoice-generator/static/css/2.0d77bc6e.chunk.css.map",
     "static/css/main.1a8caee2.chunk.css.map": "/react-invoice-generator/static/css/main.1a8caee2.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.0d77bc6e.chunk.css",
     "static/js/2.c4d5f900.chunk.js",
     "static/css/main.1a8caee2.chunk.css",
-    "static/js/main.0500c8f1.chunk.js"
+    "static/js/main.34d1fa92.chunk.js"
   ]
 }
