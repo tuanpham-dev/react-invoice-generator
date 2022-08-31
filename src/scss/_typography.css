@@ -1,0 +1,91 @@
+body {
+  font-family: Outfit, sans-serif;
+  font-size: 14px;
+  color: #555;
+  background: var(--background-color);
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+}
+
+input,
+textarea,
+select {
+  font-family: Outfit, sans-serif;
+  font-size: 12px;
+  color: #555;
+  background: transparent;
+  border-radius: 3px;
+  outline: 0;
+}
+
+select {
+  outline: 0;
+}
+
+button {
+  font-family: Outfit, sans-serif;
+  font-size: 14px;
+  border-radius: 3px;
+}
+
+textarea {
+  resize: vertical;
+  background: transparent;
+}
+
+button.link {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: var(--color-blue);
+}
+button.link:hover,
+button.link:focus {
+  text-decoration: underline;
+}
+
+button.link:focus {
+  outline: 1px dotted var(--color-cyan);
+  opacity: 1;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.login__container {
+  background-color: var(--color-white);
+  margin: 0 auto;
+  max-width: 360px;
+  padding: 30px;
+}
+.login input {
+  margin-bottom: 10px;
+  border: 1px solid var(--color-theme-light);
+}
+
+.login button {
+  background-color: var(--color-theme-dark);
+  color: var(--color-white);
+  border-color: transparent;
+}
+
+.login input,
+.login button {
+  padding: 10px;
+  border-radius: 4px;
+  min-width: 200px;
+  display: block;
+  margin: 10px auto;
+}

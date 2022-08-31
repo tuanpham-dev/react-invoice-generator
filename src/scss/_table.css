@@ -1,0 +1,25 @@
+table.table th,
+table.table td {
+  border-width: 0;
+}
+table.table thead th {
+  padding: 8px;
+  background-color: #ddd;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+table.table tbody td {
+  padding: 6px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+table.table tbody > tr:nth-child(odd) {
+  background-color: rgba(255,255,255, .5);
+}
+
+table.table tbody > tr {
+  transition: all .3s ease-in-out;
+}
+table.table tbody > tr:hover {
+  background-color: rgb(240, 220, 220);
+}

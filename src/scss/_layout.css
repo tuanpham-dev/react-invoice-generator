@@ -76,7 +76,7 @@
 
 .row {
   position: relative;
-  border: 1px solid $color-theme-light;
+  border: 1px solid var(--color-theme-light);
   border-top: none;
 }
 
@@ -89,12 +89,12 @@
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
 
-  .row:hover &,
-  .row:focus-within & {
-    opacity: 1;
-  }
+}
+.row__remove .row:hover,
+.row__remove .row:focus-within {
+  opacity: 1;
 }
 
 .bd-t {
-  border-top: 1px solid $color-theme-dark;
+  border-top: 1px solid var(--color-theme-dark);
 }

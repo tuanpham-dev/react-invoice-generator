@@ -1,11 +1,12 @@
-@import 'variables';
-@import 'color';
-@import 'layout';
-@import 'typography';
-@import 'spacing';
-@import 'text';
-@import 'icons';
-@import 'app';
+@import '_variables.css';
+@import '_color.css';
+@import '_layout.css';
+@import '_typography.css';
+@import '_spacing.css';
+@import '_text.css';
+@import '_icons.css';
+@import '_table.css';
+@import '_app.css';
 
 @page {
   margin: 9.3mm 9.3mm 9.3mm 9.3mm;
@@ -30,9 +31,9 @@
     left: 0;
     top: 0;
 
-    .donot-print {
-      display: none;
-    }
+  }
+  #section-to-print .donot-print {
+    display: none;
   }
 
   textarea {

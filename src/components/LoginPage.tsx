@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { authFB, logInWithEmailAndPassword } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -7,14 +7,14 @@ const LoginPage:FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(authFB);
-  const history = useHistory();
+  const navigate = useNavigate();
   
   useEffect(() => {
     if (loading) {
       // maybe trigger a loading screen
       return;
     }
-    if (user) history.replace("/invoice");
+    if (user) navigate("/", { replace: true });
   }, [user, loading]);
 
   return (

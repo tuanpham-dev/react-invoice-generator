@@ -16,13 +16,13 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBJt-rrVcZhgUIPRKznxYOJVaMB-5zb_dI",
-  authDomain: "invoice-app-github.firebaseapp.com",
-  projectId: "invoice-app-github",
-  storageBucket: "invoice-app-github.appspot.com",
-  messagingSenderId: "384965562729",
-  appId: "1:384965562729:web:7159caf6fdc220a7d76df8",
-  measurementId: "G-3C5SNEXL3V"
+  apiKey: process.env.REACT_APP_FIREBASE_apiKey,
+  authDomain: process.env.REACT_APP_FIREBASE_authDomain,
+  projectId: process.env.REACT_APP_FIREBASE_projectId,
+  storageBucket: process.env.REACT_APP_FIREBASE_storageBucket,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_messagingSenderId,
+  appId: process.env.REACT_APP_FIREBASE_appId,
+  measurementId: process.env.REACT_APP_FIREBASE_measurementId,
 };
 
 // Initialize Firebase
@@ -34,7 +34,7 @@ const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(authFB, email, password);
   } catch (err) {
-    console.error(err);
+    console.error(err, JSON.stringify(err));
     alert(err.message);
   }
 };
