@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import Header from '../components/header/Header';
 import InvoicePage from '../components/InvoicePage'
 import { initialInvoice } from '../data/initialData';
 import fetchData from '../utils/fetchData';
-import { GetInvoiceFromId } from '../utils/fetchdataFirebase.jsx';
 
 const currencyList = {
   'INR': { symbol: '₹', code: 'INR', label: 'INR', text: 'Rupees' },
@@ -12,9 +11,9 @@ const currencyList = {
   'USD': { symbol: '$', code: 'USD', label: 'USD', text: 'USD' },
 }
 
-function InvoiceScreen() {
-  const { invoiceid } = useParams();
-  const [currency, setCurrency] = useState('AUD');
+function AddNewInvoiceScreen() {
+//   const { invoiceid } = useParams();
+  const [currency, setCurrency] = useState('INR');
   const [loading, setLoading] = useState(true);
   const [invoiceData, setInvoiceData] = useState(initialInvoice)
   const [taxOptions, setTaxOptions] = useState({
@@ -23,8 +22,6 @@ function InvoiceScreen() {
     igst: false,
   });
   const [monthlyTemplate, setMonthlyTemplate] = useState(true);
-
-  // const [igstCheack,setIgstCheacked] = useState(false);
 
   const onChangeCurrency = (event) => {
     setCurrency(event.target.value)
@@ -40,28 +37,32 @@ function InvoiceScreen() {
 
   useEffect(() => {
     // fetchData({
-      // url: `/getinvoice?invoiceTitle=${invoiceid}`
+    //   url: `/getinvoice?invoiceTitle=${invoiceid}`
     // })
-    console.log("[params🌴]",invoiceid);
-    GetInvoiceFromId(invoiceid)
-    .then(d => {
-      if(Array.isArray(d) && d.length) {
-        setInvoiceData(d[0])
+    // .then(d => {
+    //   if(Array.isArray(d) && d.length) {
+    //     setInvoiceData(d[0])
+    //     setTaxOptions({
+    //       cgst: d[0].cgst === "" ? false : true,
+    //       sgst: d[0].sgst === "" ? false : true,
+    //       igst: d[0].igst === "" ? false : true,
+    //     })
+    //   }
+    // })
+    // .catch(e => {
+    //   console.log(e)
+    // })
+    // .finally(() => {
+    //   setLoading(false)
+    // })
         setTaxOptions({
-          cgst: d[0].cgst === "" ? false : true,
-          sgst: d[0].sgst === "" ? false : true,
-          igst: d[0].igst === "" ? false : true,
+          cgst:  false ,
+          igst:  false ,
+          sgst:  false ,
         })
-        setCurrency(`${d[0].currency}`)
-      }
-    })
-    .catch(e => {
-      console.log(e)
-    })
-    .finally(() => {
-      setLoading(false)
-    })
-  }, [invoiceid])
+    setInvoiceData(initialInvoice);
+    setLoading(false);
+  }, [])
 
   if (loading) {
     return (
@@ -88,15 +89,15 @@ function InvoiceScreen() {
           </section>
           <section className='pl-5 flex'>
             <div className='pl-5'>
-              <input type="checkbox" defaultChecked={taxOptions.igst} value={taxOptions.igst} onChange={onChangeTaxOption('igst')} id="show-igst" />
+              <input type="checkbox" value={taxOptions.igst} onChange={onChangeTaxOption('igst')} id="show-igst" />
               <label htmlFor="show-igst">IGST</label>
             </div>
             <div className='pl-5'>
-              <input type="checkbox" defaultChecked={taxOptions.cgst } value={taxOptions.cgst} onChange={onChangeTaxOption('cgst')} id="show-cgst" />
+              <input type="checkbox" value={taxOptions.cgst} onChange={onChangeTaxOption('cgst')} id="show-cgst" />
               <label htmlFor="show-cgst">CGST</label>
             </div>
             <div className='pl-5'>
-              <input type="checkbox" defaultChecked={taxOptions.sgst} value={taxOptions.sgst} onChange={onChangeTaxOption('sgst')} id="show-sgst" />
+              <input type="checkbox" value={taxOptions.sgst} onChange={onChangeTaxOption('sgst')} id="show-sgst" />
               <label htmlFor="show-sgst">SGST</label>
             </div>
           </section>
@@ -113,8 +114,7 @@ function InvoiceScreen() {
             currency={currencyList[currency]}
             // monthlyTemplate={monthlyTemplate}
             data={{ ...invoiceData }}
-            btnKey={"update"}
-            id = {`${invoiceid}`}
+            btnKey={"addNew"}
             />
         </div>
       </div>
@@ -122,4 +122,4 @@ function InvoiceScreen() {
   )
 }
 
-export default InvoiceScreen
+export default AddNewInvoiceScreen

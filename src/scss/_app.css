@@ -171,3 +171,15 @@
   border-radius: 4px;
   box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.15);
 }
+#btn_outline{
+
+  transition: all ease 300ms ;
+  cursor: pointer;
+
+}
+#btn_outline:hover{
+  cursor: pointer;
+  transition: all ease 300ms ;
+  background-color: bisque;
+
+}

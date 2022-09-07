@@ -10,6 +10,7 @@ export const initialProductLine: ProductLine = {
 
 export const initialInvoice: Invoice = {
   logo: require('../images/default-logo.png'),
+  id:"1",
   logoWidth: 90,
   title: 'Tax Invoice',
   companyName: 'Pentafox Technologies Private Limited',
