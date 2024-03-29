@@ -11,7 +11,9 @@
   padding: 4px 12px 4px 0;
   margin-bottom: 1px;
   border: 1px dotted transparent;
-  transition: background 0.1s ease-in-out, border-color 0.2s ease-in-out;
+  transition:
+    background 0.1s ease-in-out,
+    border-color 0.2s ease-in-out;
 }
 
 .input,
@@ -46,20 +48,41 @@
   margin-left: -110px;
   width: 40px;
   height: 40px;
-  background: url('../images/download.svg');
   transition: opacity 0.2s ease-in-out;
 
   &.loading {
     opacity: 0.3;
   }
 
-  a {
+  button {
+    border: none;
+  }
+
+  a,
+  label,
+  button {
     display: block;
-    position: absolute;
+    background-repeat: no-repeat;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+  }
+  .download-pdf__pdf {
+    background: url("../images/download.svg");
+  }
+  .download-pdf__template_download {
+    width: 30px;
+    height: 30px;
+    background: url("../images/template_download.svg");
+  }
+  .download-pdf__template_upload {
+    width: 30px;
+    height: 30px;
+    background: url("../images/template_upload.svg");
+  }
+  input[type="file"] {
+    visibility: hidden;
   }
 }
 
@@ -90,7 +113,9 @@
   height: 20px;
   padding: 0;
   outline: none;
-  transition: height 0.2s, font-size 0.2s;
+  transition:
+    height 0.2s,
+    font-size 0.2s;
 
   &:focus,
   &:hover {
@@ -136,7 +161,9 @@
   top: -10px;
   text-indent: -9999em;
   opacity: 0;
-  transition: opacity 0.2s, background-color 0.2s;
+  transition:
+    opacity 0.2s,
+    background-color 0.2s;
 
   &:hover,
   &:focus {
@@ -150,12 +177,12 @@
 }
 
 .image__edit {
-  background-image: url('../images/resize.svg');
+  background-image: url("../images/resize.svg");
   right: 20px;
 }
 
 .image__remove {
-  background-image: url('../images/remove.svg');
+  background-image: url("../images/remove.svg");
   right: -10px;
 }
 

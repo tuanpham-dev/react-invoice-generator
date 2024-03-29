@@ -1,22 +1,28 @@
-import React, { FC } from 'react'
-import { View as PdfView } from '@react-pdf/renderer'
-import compose from '../styles/compose'
+import React, { FC, PropsWithChildren } from "react";
+import { View as PdfView } from "@react-pdf/renderer";
+import compose from "../styles/compose";
 
 interface Props {
-  className?: string
-  pdfMode?: boolean
+  className?: string;
+  pdfMode?: boolean;
 }
 
-const View: FC<Props> = ({ className, pdfMode, children }) => {
+const View: FC<PropsWithChildren<Props>> = ({
+  className,
+  pdfMode,
+  children,
+}) => {
   return (
     <>
       {pdfMode ? (
-        <PdfView style={compose('view ' + (className ? className : ''))}>{children}</PdfView>
+        <PdfView style={compose("view " + (className ? className : ""))}>
+          {children}
+        </PdfView>
       ) : (
-        <div className={'view ' + (className ? className : '')}>{children}</div>
+        <div className={"view " + (className ? className : "")}>{children}</div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default View
+export default View;
