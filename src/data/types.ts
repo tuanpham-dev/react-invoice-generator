@@ -1,17 +1,17 @@
-import { CSSProperties } from "react";
-import { z, TypeOf } from "zod";
+import { CSSProperties } from 'react'
+import { z, TypeOf } from 'zod'
 
 export interface ProductLine {
-  description: string;
-  quantity: string;
-  rate: string;
+  description: string
+  quantity: string
+  rate: string
 }
 
 export const TProductLine = z.object({
   description: z.string(),
   quantity: z.string(),
   rate: z.string(),
-});
+})
 
 export const TInvoice = z.object({
   logo: z.string(),
@@ -46,10 +46,10 @@ export const TInvoice = z.object({
   notes: z.string(),
   termLabel: z.string(),
   term: z.string(),
-});
+})
 
-export type Invoice = TypeOf<typeof TInvoice>;
+export type Invoice = TypeOf<typeof TInvoice>
 
 export interface CSSClasses {
-  [key: string]: CSSProperties;
+  [key: string]: CSSProperties
 }

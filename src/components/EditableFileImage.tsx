@@ -1,18 +1,18 @@
-import { FC, useRef, useState } from "react";
-import Slider from "rc-slider";
-import { Image } from "@react-pdf/renderer";
-import useOnClickOutside from "../hooks/useOnClickOutside";
-import compose from "../styles/compose";
-import "rc-slider/assets/index.css";
+import { FC, useRef, useState } from 'react'
+import Slider from 'rc-slider'
+import { Image } from '@react-pdf/renderer'
+import useOnClickOutside from '../hooks/useOnClickOutside'
+import compose from '../styles/compose'
+import 'rc-slider/assets/index.css'
 
 interface Props {
-  className?: string;
-  placeholder?: string;
-  value?: string;
-  width?: number;
-  onChangeImage?: (value: string) => void;
-  onChangeWidth?: (value: number) => void;
-  pdfMode?: boolean;
+  className?: string
+  placeholder?: string
+  value?: string
+  width?: number
+  onChangeImage?: (value: string) => void
+  onChangeWidth?: (value: number) => void
+  pdfMode?: boolean
 }
 
 const EditableFileImage: FC<Props> = ({
@@ -24,82 +24,80 @@ const EditableFileImage: FC<Props> = ({
   onChangeWidth,
   pdfMode,
 }) => {
-  const fileInput = useRef<HTMLInputElement>(null);
-  const widthWrapper = useRef<HTMLDivElement>(null);
-  const [isEditing, setIsEditing] = useState<boolean>(false);
+  const fileInput = useRef<HTMLInputElement>(null)
+  const widthWrapper = useRef<HTMLDivElement>(null)
+  const [isEditing, setIsEditing] = useState<boolean>(false)
   const marks = {
-    100: "100px",
-    150: "150px",
-    200: "200px",
-    250: "250px",
-  };
+    100: '100px',
+    150: '150px',
+    200: '200px',
+    250: '250px',
+  }
 
   const handleClickOutside = () => {
     if (isEditing) {
-      setIsEditing(false);
+      setIsEditing(false)
     }
-  };
+  }
 
-  useOnClickOutside(widthWrapper, handleClickOutside);
+  useOnClickOutside(widthWrapper, handleClickOutside)
 
   const handleUpload = () => {
-    fileInput?.current?.click();
-  };
+    fileInput?.current?.click()
+  }
 
   const handleChangeImage = () => {
     if (fileInput?.current?.files) {
-      const files = fileInput.current.files;
+      const files = fileInput.current.files
 
-      if (files.length > 0 && typeof onChangeImage === "function") {
-        const reader = new FileReader();
+      if (files.length > 0 && typeof onChangeImage === 'function') {
+        const reader = new FileReader()
 
-        reader.addEventListener("load", () => {
-          if (typeof reader.result === "string") {
-            onChangeImage(reader.result);
+        reader.addEventListener('load', () => {
+          if (typeof reader.result === 'string') {
+            onChangeImage(reader.result)
           }
-        });
+        })
 
-        reader.readAsDataURL(files[0]);
+        reader.readAsDataURL(files[0])
       }
     }
-  };
+  }
 
   const handleChangeWidth = (value: number) => {
-    if (typeof onChangeWidth === "function") {
-      onChangeWidth(value);
+    if (typeof onChangeWidth === 'function') {
+      onChangeWidth(value)
     }
-  };
+  }
 
   const handleEdit = () => {
-    setIsEditing(!isEditing);
-  };
+    setIsEditing(!isEditing)
+  }
 
   const clearImage = () => {
-    if (typeof onChangeImage === "function") {
-      onChangeImage("");
+    if (typeof onChangeImage === 'function') {
+      onChangeImage('')
     }
-  };
+  }
 
   if (pdfMode) {
     if (value) {
       return (
         <Image
           style={{
-            ...compose(`image ${className ? className : ""}`),
+            ...compose(`image ${className ? className : ''}`),
             maxWidth: width,
           }}
           src={value}
         />
-      );
+      )
     } else {
-      return <></>;
+      return <></>
     }
   }
 
   return (
-    <div
-      className={`image ${value ? "mb-5" : ""} ${className ? className : ""}`}
-    >
+    <div className={`image ${value ? 'mb-5' : ''} ${className ? className : ''}`}>
       {!value ? (
         <button type="button" className="image__upload" onClick={handleUpload}>
           {placeholder}
@@ -113,11 +111,7 @@ const EditableFileImage: FC<Props> = ({
             style={{ maxWidth: width || 100 }}
           />
 
-          <button
-            type="button"
-            className="image__change"
-            onClick={handleUpload}
-          >
+          <button type="button" className="image__change" onClick={handleUpload}>
             Change Image
           </button>
 
@@ -154,7 +148,7 @@ const EditableFileImage: FC<Props> = ({
         onChange={handleChangeImage}
       />
     </div>
-  );
-};
+  )
+}
 
-export default EditableFileImage;
+export default EditableFileImage
