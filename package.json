@@ -2,54 +2,42 @@
   "name": "invoice-generator",
   "version": "0.2.1",
   "private": true,
+  "type": "module",
   "homepage": "https://tuanpham-dev.github.io/react-invoice-generator/",
-  "dependencies": {
-    "@react-pdf/renderer": "^2.0.18",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "date-fns": "^2.16.1",
-    "rc-slider": "9.2.4",
-    "react": "^16.13.1",
-    "react-datepicker": "^3.3.0",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "react-textarea-autosize": "^8.2.0",
-    "typescript": "~3.7.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@react-pdf/renderer": "^3.4.2",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.2",
+    "@testing-library/user-event": "^14.5.2",
+    "date-fns": "^3.6.0",
+    "rc-slider": "10.5.0",
+    "react-datepicker": "^6.6.0",
+    "react-textarea-autosize": "^8.5.3",
     "@types/date-fns": "^2.6.0",
-    "@types/rc-slider": "^8.6.5",
-    "@types/react-datepicker": "^3.1.1",
-    "@types/react-textarea-autosize": "^4.3.5",
-    "gh-pages": "^3.1.0",
-    "node-sass": "^4.14.1"
+    "@types/rc-slider": "^9.3.0",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.30",
+    "@types/react-textarea-autosize": "^4.3.6",
+    "gh-pages": "^6.1.1",
+    "sass": "^1.72.0",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7"
   }
 }
