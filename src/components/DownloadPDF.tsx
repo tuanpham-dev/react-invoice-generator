@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from "react";
+import React, { FC } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Invoice, TInvoice } from "../data/types";
 import { useDebounce } from "@uidotdev/usehooks";
@@ -11,7 +11,6 @@ interface Props {
 }
 
 const Download: FC<Props> = ({ data, setData }) => {
-  const [show, setShow] = useState<boolean>(false);
   const debounced = useDebounce(data, 500);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {

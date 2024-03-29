@@ -1,4 +1,3 @@
-import React from "react";
 import InvoicePage from "./components/InvoicePage";
 import { Invoice } from "./data/types";
 

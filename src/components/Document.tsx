@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Document as PdfDocument } from "@react-pdf/renderer";
 
 interface Props {

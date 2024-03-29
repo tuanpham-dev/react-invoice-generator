@@ -1,4 +1,4 @@
-import React, { FC, PropsWithChildren } from "react";
+import { FC, PropsWithChildren } from "react";
 import { Page as PdfPage } from "@react-pdf/renderer";
 import compose from "../styles/compose";
 

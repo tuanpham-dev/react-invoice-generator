@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from "react";
+import { FC, useState, useEffect } from "react";
 import { Invoice, ProductLine } from "../data/types";
 import { initialInvoice, initialProductLine } from "../data/initialData";
 import EditableInput from "./EditableInput";
@@ -99,9 +99,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   };
 
   const handleRemove = (i: number) => {
-    const productLines = invoice.productLines.filter(
-      (productLine, index) => index !== i,
-    );
+    const productLines = invoice.productLines.filter((_, index) => index !== i);
 
     setInvoice({ ...invoice, productLines });
   };
