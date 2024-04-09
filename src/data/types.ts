@@ -1,4 +1,5 @@
 import { CSSProperties } from 'react'
+import { z, TypeOf } from 'zod'
 
 export interface ProductLine {
   description: string
@@ -6,47 +7,48 @@ export interface ProductLine {
   rate: string
 }
 
-export interface Invoice {
-  logo: string
-  logoWidth: number
-  title: string
-  companyName: string
-  name: string
-  companyAddress: string
-  companyAddress2: string
-  companyCountry: string
+export const TProductLine = z.object({
+  description: z.string(),
+  quantity: z.string(),
+  rate: z.string(),
+})
 
-  billTo: string
-  clientName: string
-  clientAddress: string
-  clientAddress2: string
-  clientCountry: string
+export const TInvoice = z.object({
+  logo: z.string(),
+  logoWidth: z.number(),
+  title: z.string(),
+  companyName: z.string(),
+  name: z.string(),
+  companyAddress: z.string(),
+  companyAddress2: z.string(),
+  companyCountry: z.string(),
+  billTo: z.string(),
+  clientName: z.string(),
+  clientAddress: z.string(),
+  clientAddress2: z.string(),
+  clientCountry: z.string(),
+  invoiceTitleLabel: z.string(),
+  invoiceTitle: z.string(),
+  invoiceDateLabel: z.string(),
+  invoiceDate: z.string(),
+  invoiceDueDateLabel: z.string(),
+  invoiceDueDate: z.string(),
+  productLineDescription: z.string(),
+  productLineQuantity: z.string(),
+  productLineQuantityRate: z.string(),
+  productLineQuantityAmount: z.string(),
+  productLines: z.array(TProductLine),
+  subTotalLabel: z.string(),
+  taxLabel: z.string(),
+  totalLabel: z.string(),
+  currency: z.string(),
+  notesLabel: z.string(),
+  notes: z.string(),
+  termLabel: z.string(),
+  term: z.string(),
+})
 
-  invoiceTitleLabel: string
-  invoiceTitle: string
-  invoiceDateLabel: string
-  invoiceDate: string
-  invoiceDueDateLabel: string
-  invoiceDueDate: string
-
-  productLineDescription: string
-  productLineQuantity: string
-  productLineQuantityRate: string
-  productLineQuantityAmount: string
-
-  productLines: ProductLine[]
-
-  subTotalLabel: string
-  taxLabel: string
-
-  totalLabel: string
-  currency: string
-
-  notesLabel: string
-  notes: string
-  termLabel: string
-  term: string
-}
+export type Invoice = TypeOf<typeof TInvoice>
 
 export interface CSSClasses {
   [key: string]: CSSProperties

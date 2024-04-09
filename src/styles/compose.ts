@@ -2,7 +2,10 @@ import ReactPDF from '@react-pdf/renderer'
 import styles from './styles'
 
 const compose = (classes: string): ReactPDF.Styles => {
-  const css: ReactPDF.Styles = {}
+  const css: ReactPDF.Styles = {
+    //@ts-ignore
+    '@import': 'url(https://fonts.bunny.net/css?family=nunito:400,600)',
+  }
 
   const classesArray: string[] = classes.replace(/\s+/g, ' ').split(' ')
 

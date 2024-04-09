@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Text } from '@react-pdf/renderer'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -21,7 +21,7 @@ const EditableCalendarInput: FC<Props> = ({ className, value, selected, onChange
         <DatePicker
           className={'input ' + (className ? className : '')}
           selected={selected}
-          onChange={onChange ? (date) => onChange(date) : (date) => null}
+          onChange={onChange ? (date) => onChange(date) : () => null}
           dateFormat="MMM dd, yyyy"
         />
       )}

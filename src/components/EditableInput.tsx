@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Text } from '@react-pdf/renderer'
 import compose from '../styles/compose'
 

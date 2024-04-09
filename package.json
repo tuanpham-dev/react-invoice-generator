@@ -2,54 +2,41 @@
   "name": "invoice-generator",
   "version": "0.2.1",
   "private": true,
+  "type": "module",
   "homepage": "https://tuanpham-dev.github.io/react-invoice-generator/",
-  "dependencies": {
-    "@react-pdf/renderer": "^2.0.18",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "date-fns": "^2.16.1",
-    "rc-slider": "9.2.4",
-    "react": "^16.13.1",
-    "react-datepicker": "^3.3.0",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1",
-    "react-textarea-autosize": "^8.2.0",
-    "typescript": "~3.7.2"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "prettier -c .",
+    "lint:write": "prettier -w .",
+    "preview": "vite preview"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "dependencies": {
+    "@react-pdf/renderer": "^3.4.2",
+    "@uidotdev/usehooks": "^2.4.1",
+    "@vitejs/plugin-react-swc": "^3.6.0",
+    "date-fns": "^3.6.0",
+    "file-saver": "^2.0.5",
+    "gh-pages": "^6.1.1",
+    "rc-slider": "10.5.0",
+    "react": "^18.2.0",
+    "react-datepicker": "^6.6.0",
+    "react-dom": "^18.2.0",
+    "react-textarea-autosize": "^8.5.3",
+    "sass": "^1.72.0",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/date-fns": "^2.6.0",
-    "@types/rc-slider": "^8.6.5",
-    "@types/react-datepicker": "^3.1.1",
-    "@types/react-textarea-autosize": "^4.3.5",
-    "gh-pages": "^3.1.0",
-    "node-sass": "^4.14.1"
+    "@types/file-saver": "^2.0.7",
+    "@types/node": "^20.11.30",
+    "@types/rc-slider": "^9.3.0",
+    "@types/react": "^18.2.73",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/react-dom": "^18.2.23",
+    "@types/react-textarea-autosize": "^8.0.0",
+    "prettier": "^3.2.5"
   }
 }

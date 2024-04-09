@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { Invoice, ProductLine } from '../data/types'
 import { initialInvoice, initialProductLine } from '../data/initialData'
 import EditableInput from './EditableInput'
@@ -13,13 +13,16 @@ import View from './View'
 import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
-import format from 'date-fns/format'
+import { format } from 'date-fns/format'
 
 Font.register({
   family: 'Nunito',
   fonts: [
     { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXV3I6Li01BKofINeaE.ttf' },
-    { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf', fontWeight: 600 },
+    {
+      src: 'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf',
+      fontWeight: 600,
+    },
   ],
 })
 
@@ -89,7 +92,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   }
 
   const handleRemove = (i: number) => {
-    const productLines = invoice.productLines.filter((productLine, index) => index !== i)
+    const productLines = invoice.productLines.filter((_, index) => index !== i)
 
     setInvoice({ ...invoice, productLines })
   }
@@ -139,7 +142,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   return (
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
-        {!pdfMode && <Download data={invoice} />}
+        {!pdfMode && <Download data={invoice} setData={(d) => setInvoice(d)} />}
 
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-50" pdfMode={pdfMode}>
@@ -263,7 +266,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   onChange={(date) =>
                     handleChange(
                       'invoiceDate',
-                      date && !Array.isArray(date) ? format(date, dateFormat) : ''
+                      date && !Array.isArray(date) ? format(date, dateFormat) : '',
                     )
                   }
                   pdfMode={pdfMode}
@@ -286,7 +289,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   onChange={(date) =>
                     handleChange(
                       'invoiceDueDate',
-                      date && !Array.isArray(date) ? format(date, dateFormat) : ''
+                      date ? (!Array.isArray(date) ? format(date, dateFormat) : '') : '',
                     )
                   }
                   pdfMode={pdfMode}

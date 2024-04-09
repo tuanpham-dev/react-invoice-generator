@@ -1,4 +1,3 @@
-import React from 'react'
 import InvoicePage from './components/InvoicePage'
 import { Invoice } from './data/types'
 
@@ -10,7 +9,7 @@ function App() {
     if (savedInvoice) {
       data = JSON.parse(savedInvoice)
     }
-  } catch (_e) { }
+  } catch (_e) {}
 
   const onInvoiceUpdated = (invoice: Invoice) => {
     window.localStorage.setItem('invoiceData', JSON.stringify(invoice))

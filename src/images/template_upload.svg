@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   version="1.1"
+   id="Capa_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 58 58"
+   style="enable-background:new 0 0 58 58;"
+   xml:space="preserve"
+   sodipodi:docname="template_upload.svg"
+   inkscape:export-filename="template_upload.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs4" /><sodipodi:namedview
+   id="namedview4"
+   pagecolor="#ffffff"
+   bordercolor="#000000"
+   borderopacity="0.25"
+   inkscape:showpageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="9.7068966"
+   inkscape:cx="29"
+   inkscape:cy="28.94849"
+   inkscape:window-width="2560"
+   inkscape:window-height="1343"
+   inkscape:window-x="0"
+   inkscape:window-y="25"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="g4" />
+<g
+   id="g4">
+	<g
+   id="g2">
+		<polygon
+   style="fill:#EFEBDE;"
+   points="46.5,14 32.5,0 1.5,0 1.5,58 46.5,58   "
+   id="polygon1" />
+	
+		<polygon
+   style="fill:#D5D0BB;"
+   points="32.5,0 32.5,14 46.5,14   "
+   id="polygon2" />
+	</g>
+	<g
+   id="g3">
+		<rect
+   x="34.5"
+   y="36"
+   style="fill:#7c96e6;fill-opacity:1"
+   width="22"
+   height="22"
+   id="rect2" />
+		<rect
+   x="44.5"
+   y="40.616196"
+   style="fill:#ffffff;stroke-width:0.967271"
+   width="2"
+   height="14.969805"
+   id="rect3" />
+		<polygon
+   style="fill:#ffffff"
+   points="39.976,46.879 45.5,52.172 51.024,46.879 52.5,48.293 45.5,55 38.5,48.293 "
+   id="polygon3"
+   transform="rotate(180,45.5,46.9395)" />
+	</g>
+</g>
+
+</svg>

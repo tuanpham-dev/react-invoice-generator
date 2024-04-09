@@ -138,7 +138,7 @@ const styles: CSSClasses = {
 
   logo: {
     display: 'block',
-  }
+  },
 }
 
 export default styles
