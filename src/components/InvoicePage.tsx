@@ -2,11 +2,8 @@ import { FC, useState, useEffect } from 'react'
 import { Invoice, ProductLine } from '../data/types'
 import { initialInvoice, initialProductLine } from '../data/initialData'
 import EditableInput from './EditableInput'
-import EditableSelect from './EditableSelect'
 import EditableTextarea from './EditableTextarea'
 import EditableCalendarInput from './EditableCalendarInput'
-import EditableFileImage from './EditableFileImage'
-import countryList from '../data/countryList'
 import Document from './Document'
 import Page from './Page'
 import View from './View'
@@ -14,6 +11,8 @@ import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
 import { format } from 'date-fns/format'
+import { nl } from 'date-fns/locale'
+import { parse } from 'date-fns'
 
 Font.register({
   family: 'Nunito',
@@ -26,6 +25,8 @@ Font.register({
   ],
 })
 
+const formatOptions = {}
+
 interface Props {
   data?: Invoice
   pdfMode?: boolean
@@ -37,11 +38,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [subTotal, setSubTotal] = useState<number>()
   const [saleTax, setSaleTax] = useState<number>()
 
-  const dateFormat = 'MMM dd, yyyy'
-  const invoiceDate = invoice.invoiceDate !== '' ? new Date(invoice.invoiceDate) : new Date()
+  // const dateFormat = 'MMM dd, yyyy'
+  const dateFormat = 'dd-MM-yyyy'
+
+  const invoiceDate =
+    invoice.invoiceDate !== '' ? parse(invoice.invoiceDate, dateFormat, new Date()) : new Date()
   const invoiceDueDate =
     invoice.invoiceDueDate !== ''
-      ? new Date(invoice.invoiceDueDate)
+      ? parse(invoice.invoiceDueDate, dateFormat, new Date())
       : new Date(invoiceDate.valueOf())
 
   if (invoice.invoiceDueDate === '') {
@@ -139,6 +143,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
     }
   }, [onChange, invoice])
 
+  const myIban = 'NL56 INGB 0688 9974 81'
   return (
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
@@ -146,15 +151,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
 
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-50" pdfMode={pdfMode}>
-            <EditableFileImage
-              className="logo"
-              placeholder="Your Logo"
-              value={invoice.logo}
-              width={invoice.logoWidth}
-              pdfMode={pdfMode}
-              onChangeImage={(value) => handleChange('logo', value)}
-              onChangeWidth={(value) => handleChange('logoWidth', value)}
-            />
             <EditableInput
               className="fs-20 bold"
               placeholder="Your Company"
@@ -180,12 +176,9 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChange={(value) => handleChange('companyAddress2', value)}
               pdfMode={pdfMode}
             />
-            <EditableSelect
-              options={countryList}
-              value={invoice.companyCountry}
-              onChange={(value) => handleChange('companyCountry', value)}
-              pdfMode={pdfMode}
-            />
+            <Text pdfMode={pdfMode}>KVK: 87615169</Text>
+            <Text pdfMode={pdfMode}>BTW-id: NL004449019B17</Text>
+            <Text pdfMode={pdfMode}>{`IBAN: ${myIban}`}</Text>
           </View>
           <View className="w-50" pdfMode={pdfMode}>
             <EditableInput
@@ -224,12 +217,6 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChange={(value) => handleChange('clientAddress2', value)}
               pdfMode={pdfMode}
             />
-            <EditableSelect
-              options={countryList}
-              value={invoice.clientCountry}
-              onChange={(value) => handleChange('clientCountry', value)}
-              pdfMode={pdfMode}
-            />
           </View>
           <View className="w-45" pdfMode={pdfMode}>
             <View className="flex mb-5" pdfMode={pdfMode}>
@@ -261,14 +248,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               </View>
               <View className="w-60" pdfMode={pdfMode}>
                 <EditableCalendarInput
-                  value={format(invoiceDate, dateFormat)}
+                  value={format(invoiceDate, dateFormat, formatOptions)}
                   selected={invoiceDate}
-                  onChange={(date) =>
+                  onChange={(date) => {
                     handleChange(
                       'invoiceDate',
-                      date && !Array.isArray(date) ? format(date, dateFormat) : '',
+                      date && !Array.isArray(date) ? format(date, dateFormat, formatOptions) : '',
                     )
-                  }
+                  }}
                   pdfMode={pdfMode}
                 />
               </View>
@@ -284,12 +271,16 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               </View>
               <View className="w-60" pdfMode={pdfMode}>
                 <EditableCalendarInput
-                  value={format(invoiceDueDate, dateFormat)}
+                  value={format(invoiceDueDate, dateFormat, formatOptions)}
                   selected={invoiceDueDate}
                   onChange={(date) =>
                     handleChange(
                       'invoiceDueDate',
-                      date ? (!Array.isArray(date) ? format(date, dateFormat) : '') : '',
+                      date
+                        ? !Array.isArray(date)
+                          ? format(date, dateFormat, formatOptions)
+                          : ''
+                        : '',
                     )
                   }
                   pdfMode={pdfMode}
@@ -389,7 +380,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
             {!pdfMode && (
               <button className="link" onClick={handleAdd}>
                 <span className="icon icon-add bg-green mr-10"></span>
-                Add Line Item
+                Voeg regel toe
               </button>
             )}
           </View>
@@ -452,32 +443,14 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
         <View className="mt-20" pdfMode={pdfMode}>
           <EditableInput
             className="bold w-100"
-            value={invoice.notesLabel}
-            onChange={(value) => handleChange('notesLabel', value)}
-            pdfMode={pdfMode}
-          />
-          <EditableTextarea
-            className="w-100"
-            rows={2}
-            value={invoice.notes}
-            onChange={(value) => handleChange('notes', value)}
-            pdfMode={pdfMode}
-          />
-        </View>
-        <View className="mt-20" pdfMode={pdfMode}>
-          <EditableInput
-            className="bold w-100"
             value={invoice.termLabel}
             onChange={(value) => handleChange('termLabel', value)}
             pdfMode={pdfMode}
           />
-          <EditableTextarea
-            className="w-100"
-            rows={2}
-            value={invoice.term}
-            onChange={(value) => handleChange('term', value)}
-            pdfMode={pdfMode}
-          />
+          <div>
+            Gelieve de betaling voor {format(invoiceDueDate, dateFormat, formatOptions)} over te
+            maken naar {myIban}
+          </div>
         </View>
       </Page>
     </Document>

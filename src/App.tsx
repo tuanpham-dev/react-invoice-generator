@@ -12,7 +12,7 @@ function App() {
   } catch (_e) {}
 
   const onInvoiceUpdated = (invoice: Invoice) => {
-    window.localStorage.setItem('invoiceData', JSON.stringify(invoice))
+    // window.localStorage.setItem('invoiceData', JSON.stringify(invoice))
   }
 
   return (

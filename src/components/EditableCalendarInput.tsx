@@ -13,6 +13,7 @@ interface Props {
 }
 
 const EditableCalendarInput: FC<Props> = ({ className, value, selected, onChange, pdfMode }) => {
+  const dateFormat = 'dd-MM-yyyy'
   return (
     <>
       {pdfMode ? (
@@ -22,7 +23,7 @@ const EditableCalendarInput: FC<Props> = ({ className, value, selected, onChange
           className={'input ' + (className ? className : '')}
           selected={selected}
           onChange={onChange ? (date) => onChange(date) : () => null}
-          dateFormat="MMM dd, yyyy"
+          dateFormat={dateFormat}
         />
       )}
     </>
