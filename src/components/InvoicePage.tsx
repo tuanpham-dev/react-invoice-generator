@@ -11,7 +11,6 @@ import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
 import { format } from 'date-fns/format'
-import { nl } from 'date-fns/locale'
 import { parse } from 'date-fns'
 
 Font.register({
