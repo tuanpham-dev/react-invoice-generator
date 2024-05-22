@@ -30,12 +30,29 @@ interface Props {
   data?: Invoice
   pdfMode?: boolean
   onChange?: (invoice: Invoice) => void
+  id?: string
 }
 
-const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
+const InvoicePage: FC<Props> = ({ data, pdfMode, onChange, id }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
   const [saleTax, setSaleTax] = useState<number>()
+
+  const saveChanges = async () => {
+    const invoiceWithId = { ...invoice, id: id }
+    const response = await fetch(`http://localhost:3001/upsert`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(invoiceWithId),
+    })
+    if (!response.ok) {
+      throw new Error('Failed to save changes')
+    }
+    alert(await response.text())
+    window.location.reload()
+  }
 
   // const dateFormat = 'MMM dd, yyyy'
   const dateFormat = 'dd-MM-yyyy'
@@ -143,10 +160,19 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   }, [onChange, invoice])
 
   const myIban = 'NL56 INGB 0688 9974 81'
+
+  const betalingsTermijnString = `Wij verzoeken u vriendelijk om een bedrag van €${(typeof subTotal !==
+    'undefined' && typeof saleTax !== 'undefined'
+    ? subTotal + saleTax
+    : 0
+  ).toFixed(
+    2,
+  )} over te maken voor ${format(invoiceDueDate, dateFormat, formatOptions)} naar ${myIban}.`
+
   return (
     <Document pdfMode={pdfMode}>
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
-        {!pdfMode && <Download data={invoice} setData={(d) => setInvoice(d)} />}
+        {!pdfMode && <Download data={invoice} saveChanges={saveChanges} />}
 
         <View className="flex" pdfMode={pdfMode}>
           <View className="w-50" pdfMode={pdfMode}>
@@ -439,17 +465,16 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           </View>
         </View>
 
-        <View className="mt-20" pdfMode={pdfMode}>
+        <View className="mt-20 w-100" pdfMode={pdfMode}>
           <EditableInput
             className="bold w-100"
             value={invoice.termLabel}
             onChange={(value) => handleChange('termLabel', value)}
             pdfMode={pdfMode}
           />
-          <div>
-            Gelieve de betaling voor {format(invoiceDueDate, dateFormat, formatOptions)} over te
-            maken naar {myIban}
-          </div>
+          <Text pdfMode={pdfMode} className="flex w-100 text-small ">
+            {betalingsTermijnString}
+          </Text>
         </View>
       </Page>
     </Document>

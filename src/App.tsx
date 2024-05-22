@@ -1,5 +1,6 @@
 import InvoicePage from './components/InvoicePage'
 import { Invoice } from './data/types'
+import './scss/main.scss'
 
 function App() {
   const savedInvoice = window.localStorage.getItem('invoiceData')
@@ -12,7 +13,7 @@ function App() {
   } catch (_e) {}
 
   const onInvoiceUpdated = (invoice: Invoice) => {
-    // window.localStorage.setItem('invoiceData', JSON.stringify(invoice))
+    console.log('Invoice updated', invoice)
   }
 
   return (

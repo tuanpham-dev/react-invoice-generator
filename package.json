@@ -6,6 +6,7 @@
   "homepage": "https://tuanpham-dev.github.io/react-invoice-generator/",
   "scripts": {
     "dev": "vite",
+    "server": "tsx watch server.ts",
     "build": "tsc && vite build",
     "lint": "prettier -c .",
     "lint:write": "prettier -w .",
@@ -13,18 +14,24 @@
   },
   "dependencies": {
     "@react-pdf/renderer": "^3.4.2",
+    "@types/express": "^4.17.21",
     "@uidotdev/usehooks": "^2.4.1",
     "@vitejs/plugin-react-swc": "^3.6.0",
+    "cors": "^2.8.5",
     "date-fns": "^3.6.0",
+    "express": "^4.19.2",
     "file-saver": "^2.0.5",
     "gh-pages": "^6.1.1",
+    "lucide-react": "^0.378.0",
     "rc-slider": "10.5.0",
     "react": "^18.2.0",
     "react-datepicker": "^6.6.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.23.1",
     "react-textarea-autosize": "^8.5.3",
     "sass": "^1.72.0",
     "typescript": "^5.4.3",
+    "uuid": "^9.0.1",
     "vite": "^5.2.7",
     "zod": "^3.22.4"
   },
@@ -37,6 +44,11 @@
     "@types/react-datepicker": "^6.2.0",
     "@types/react-dom": "^18.2.23",
     "@types/react-textarea-autosize": "^8.0.0",
-    "prettier": "^3.2.5"
+    "@types/uuid": "^9.0.8",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.3",
+    "tsx": "^4.10.5"
   }
 }

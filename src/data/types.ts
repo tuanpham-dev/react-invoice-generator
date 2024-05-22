@@ -48,6 +48,10 @@ export const TInvoice = z.object({
   term: z.string(),
 })
 
+export const InvoiceWithId = TInvoice.extend({
+  id: z.string(),
+})
+
 export type Invoice = TypeOf<typeof TInvoice>
 
 export interface CSSClasses {
