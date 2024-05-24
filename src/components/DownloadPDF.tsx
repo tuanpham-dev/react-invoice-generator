@@ -1,7 +1,6 @@
-import React, { FC } from 'react'
+import { ChangeEvent, FC, useEffect, useState } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { Invoice, TInvoice } from '../data/types'
-import { useDebounce } from '@uidotdev/usehooks'
 import InvoicePage from './InvoicePage'
 import FileSaver from 'file-saver'
 
@@ -11,9 +10,20 @@ interface Props {
 }
 
 const Download: FC<Props> = ({ data, setData }) => {
-  const debounced = useDebounce(data, 500)
+  const [showDoc, setShowDoc] = useState(true)
+  const [t, setT] = useState<null | number>(null)
 
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+  useEffect(() => {
+    setShowDoc(false)
+    if (t) clearTimeout(t)
+    setT(
+      setTimeout(() => {
+        setShowDoc(true)
+      }, 500) as any,
+    )
+  }, [data])
+
+  function handleInput(e: ChangeEvent<HTMLInputElement>) {
     if (!e.target.files?.length) return
 
     const file = e.target.files[0]
@@ -37,7 +47,7 @@ const Download: FC<Props> = ({ data, setData }) => {
   }
 
   function handleSaveTemplate() {
-    const blob = new Blob([JSON.stringify(debounced)], {
+    const blob = new Blob([JSON.stringify(data)], {
       type: 'text/plain;charset=utf-8',
     })
     FileSaver(blob, title + '.template')
@@ -45,15 +55,19 @@ const Download: FC<Props> = ({ data, setData }) => {
 
   const title = data.invoiceTitle ? data.invoiceTitle.toLowerCase() : 'invoice'
   return (
-    <div className={'download-pdf '}>
-      <PDFDownloadLink
-        key="pdf"
-        document={<InvoicePage pdfMode={true} data={debounced} />}
-        fileName={`${title}.pdf`}
-        aria-label="Save PDF"
-        title="Save PDF"
-        className="download-pdf__pdf"
-      ></PDFDownloadLink>
+    <div className="download-pdf">
+      {showDoc ? (
+        <PDFDownloadLink
+          key="pdf"
+          document={<InvoicePage pdfMode={true} data={data} />}
+          fileName={`${title}.pdf`}
+          aria-label="Save PDF"
+          title="Save PDF"
+          className="download-pdf__pdf"
+        ></PDFDownloadLink>
+      ) : (
+        <button type="button" className="download-pdf__pdf loading" />
+      )}
       <p>Save PDF</p>
 
       <button

@@ -50,12 +50,12 @@
   height: 40px;
   transition: opacity 0.2s ease-in-out;
 
-  &.loading {
-    opacity: 0.3;
-  }
-
   button {
     border: none;
+  }
+  > .loading {
+    opacity: 0.3;
+    cursor: wait;
   }
 
   a,
