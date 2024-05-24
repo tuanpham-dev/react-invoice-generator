@@ -1,6 +1,16 @@
 .app {
-  margin: 30px auto 50px auto;
+  margin: 30px auto 50px;
   width: 700px;
+
+  &__title {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    @media only screen and (max-width: 920px) {
+      margin-left: 4px;
+      text-align: start;
+    }
+  }
 }
 
 .input,
@@ -43,46 +53,74 @@
 }
 
 .download-pdf {
-  position: fixed;
-  top: 100px;
-  margin-left: -110px;
-  width: 40px;
-  height: 40px;
+  overflow: hidden;
+  position: absolute;
+  top: 2px;
+  left: -82px;
   transition: opacity 0.2s ease-in-out;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 4px 0;
+  grid-template-columns: 60px;
+  text-align: center;
 
-  &.loading {
-    opacity: 0.3;
+  @media only screen and (max-width: 920px) {
+    top: -82px;
+    right: 4px;
+    left: auto;
+    grid-template-rows: 40px 20px;
+    grid-auto-flow: column;
+    gap: 0 10px;
   }
 
   button {
     border: none;
   }
+  > .loading {
+    opacity: 0.3;
+    cursor: wait !important;
+  }
 
-  a,
-  label,
-  button {
+  .download-pdf__pdf,
+  .download-pdf__template_download,
+  .download-pdf__template_upload {
     display: block;
     background-repeat: no-repeat;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: #fff solid 2px;
+    &:hover {
+      outline-offset: 2px;
+      ~ p {
+        opacity: 1;
+      }
+    }
+
+    @media only screen and (min-width: 921px) {
+      margin-top: 12px;
+    }
+  }
+  button {
+    background-color: transparent;
   }
   .download-pdf__pdf {
-    background: url('../images/download.svg');
+    background-image: url('../images/download.svg');
   }
   .download-pdf__template_download {
-    width: 30px;
-    height: 30px;
-    background: url('../images/template_download.svg');
+    background-image: url('../images/template_download.svg');
   }
   .download-pdf__template_upload {
-    width: 30px;
-    height: 30px;
-    background: url('../images/template_upload.svg');
+    background-image: url('../images/template_upload.svg');
   }
   input[type='file'] {
     visibility: hidden;
+  }
+  p {
+    margin: 0;
   }
 }
 
