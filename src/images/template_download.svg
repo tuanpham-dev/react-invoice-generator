@@ -5,12 +5,12 @@
 	 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
 <g>
 	<g>
-		<polygon style="fill:#EFEBDE;" points="46.5,14 32.5,0 1.5,0 1.5,58 46.5,58 		"/>
+		<polygon style="fill:#EFEBDE;" points="46.5,14 32.5,0 1.5,0 1.5,58 46.5,58"/>
 	
-		<polygon style="fill:#D5D0BB;" points="32.5,0 32.5,14 46.5,14 		"/>
+		<polygon style="fill:#D5D0BB;" points="32.5,0 32.5,14 46.5,14"/>
 	</g>
 	<g>
-		<rect x="34.5" y="36" style="fill:#21AE5E;" width="22" height="22"/>
+		<rect x="34.5" y="36" style="fill:#7c96e6;" width="22" height="22"/>
 		<rect x="44.5" y="37.586" style="fill:#FFFFFF;" width="2" height="16"/>
 		<polygon style="fill:#FFFFFF;" points="45.5,55 38.5,48.293 39.976,46.879 45.5,52.172 51.024,46.879 52.5,48.293 		"/>
 	</g>
