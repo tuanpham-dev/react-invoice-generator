@@ -155,13 +155,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
               onChangeImage={(value) => handleChange('logo', value)}
               onChangeWidth={(value) => handleChange('logoWidth', value)}
             />
-            <EditableInput
-              className="fs-20 bold"
-              placeholder="Your Company"
-              value={invoice.companyName}
-              onChange={(value) => handleChange('companyName', value)}
-              pdfMode={pdfMode}
-            />
+
             <EditableInput
               placeholder="Your Name"
               value={invoice.name}

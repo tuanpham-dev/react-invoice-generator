@@ -42,6 +42,34 @@
   box-shadow: 0 0 17px 0 rgba(16, 40, 73, 0.09);
 }
 
+.invoice-wrapper-my {
+  position: relative;
+  background: #fff;
+  padding: 40px 35px;
+  box-shadow: 0 0 17px 0 rgba(16, 40, 73, 0.09);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  gap: 15px;
+}
+
+.invoice-container {
+  grid-column: span 3; /* Takes up first 3 columns */
+  grid-row: 1; /* First row */
+}
+
+.logo-pdf {
+  grid-column: 4; /* Takes the last column */
+  grid-row: 1; /* First row */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.one-block {
+  height: 24vh;
+  /* No need to specify grid-column or grid-row - it will automatically flow */
+}
+
 .download-pdf {
   position: fixed;
   top: 100px;
