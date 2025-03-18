@@ -5,6 +5,15 @@
 .flex {
   display: flex;
 }
+.grid {
+  display: grid;
+}
+.grid-cols-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.gap-3 {
+  gap: 12px;
+}
 
 .w-auto {
   width: auto !important;
@@ -44,6 +53,27 @@
 
 .w-18 {
   width: 18%;
+}
+.col-span-1 {
+  grid-column: span 1;
+}
+.col-span-2 {
+  grid-column: span 2;
+}
+.col-span-3 {
+  grid-column: span 3;
+}
+.col-span-4 {
+  grid-column: span 4;
+}
+.text-right {
+  text-align: right;
+}
+.justify-end {
+  align-items: flex-end;
+}
+.flex-col {
+  flex-direction: column;
 }
 
 .row {
