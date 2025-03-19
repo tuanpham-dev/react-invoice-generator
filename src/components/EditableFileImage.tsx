@@ -112,15 +112,15 @@ const EditableFileImage: FC<Props> = ({
           />
 
           <button type="button" className="image__change" onClick={handleUpload}>
-            Change Image
+            CHANGE LOGO
           </button>
 
           <button type="button" className="image__edit" onClick={handleEdit}>
-            Resize Image
+            RESIZE LOGO
           </button>
 
           <button type="button" className="image__remove" onClick={clearImage}>
-            Remove
+            REMOVE LOGO
           </button>
 
           {isEditing && (

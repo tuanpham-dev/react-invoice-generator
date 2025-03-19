@@ -1,6 +1,26 @@
 .app {
-  margin: 30px auto 50px auto;
-  width: 700px;
+  width: 100%;
+  background-color: #000;
+  position: relative;
+  background-color: black;
+  
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px; 
+    background-color: white;
+  }
+
+  &::before {
+    left: 2rem;
+  }
+
+  &::after {
+    right: 2rem;
+  }
 }
 
 .input,
@@ -20,7 +40,7 @@
 .select {
   &:hover,
   &:focus {
-    background: $color-yellow;
+    background: $color-gray;
   }
 
   &:focus {
@@ -35,19 +55,116 @@
   }
 }
 
+
 .invoice-wrapper {
   position: relative;
   background: #fff;
+  margin: 256px 256px;
   padding: 40px 35px;
-  box-shadow: 0 0 17px 0 rgba(16, 40, 73, 0.09);
+  box-shadow: 0 0 1px 0 #000;
+  border-style: #000;
+}
+
+/* Adjust padding for smaller screens */
+@media (max-width: 1024px) {
+  .invoice-wrapper {
+    margin: 96px 96px;
+  }
+}
+
+@media (max-width: 768px) {
+  .invoice-wrapper {
+    margin: 64px 64px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-wrapper {
+    margin: 40px 40px;
+  }
+}
+
+$button-bg: #7900B1; // Purple background
+$button-text: #ffffff; // White text
+$button-border: #ffffff; // White border
+$button-hover-bg: darken($button-bg, 10%);
+$button-hover-border: lighten($button-border, 10%);
+
+.edit-button-container {
+  display: flex;
+  justify-content: center; // Centers horizontally
+  align-items: center; // Centers vertically (if needed)
+  margin-top: 20px; // Adjust as needed
+}
+
+.edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; // Space between text and icon
+  background-color: $button-bg;
+  color: $button-text;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: lowercase;
+  padding: 16px 32px;
+  border: 0.5px solid $button-border;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  cursor: pointer;
+  
+  text-decoration: none; // Remove default link styles
+  width: fit-content; // Keep button width only as wide as its content
+
+ 
+    &:hover {
+    background-color: #ffffff; // Turns white on hover
+    color: #000000; // Text turns black
+  }
+  
+
+  &:active {
+    transform: scale(0.98); // Small shrink effect when clicked
+  }
+
+  // Add the arrow icon inside
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url('../images/arrow.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 8px; // Space between text and icon
+  }
+}
+
+.invoice-container {
+  grid-column: span 3; /* Takes up first 3 columns */
+  grid-row: 1; /* First row */
+}
+
+.logo-pdf {
+  grid-column: 4; /* Takes the last column */
+  grid-row: 1; /* First row */
+  display: flex;
+  justify-content: flex-end;
+}
+
+.one-block {
+  min-height: 24vh;
+  /* No need to specify grid-column or grid-row - it will automatically flow */
 }
 
 .download-pdf {
   position: fixed;
-  top: 100px;
-  margin-left: -110px;
-  width: 40px;
-  height: 40px;
+  background-color: #000;
+  top: 140px;
+  margin-left: 0px;
+  width: 36px;
+  height: 36px;
+  z-index: 1000;
   transition: opacity 0.2s ease-in-out;
 
   &.loading {
@@ -70,10 +187,17 @@
   }
   .download-pdf__pdf {
     background: url('../images/download.svg');
+    color: '#ffffff';
   }
+
+.icon-add {
+   background: url('../images/download.svg');
+   cursor: pointer;
+}
+
   .download-pdf__template_download {
-    width: 30px;
-    height: 30px;
+    width: 3px;
+    height: 3px;
     background: url('../images/template_download.svg');
   }
   .download-pdf__template_upload {
@@ -103,25 +227,30 @@
 }
 
 .image__upload {
-  cursor: pointer;
-  font-size: 12px;
-  color: $placeholder-color;
-  background-color: $color-gray;
-  border: 2px dashed $placeholder-color;
-  display: block;
-  width: 100px;
-  height: 20px;
-  padding: 0;
-  outline: none;
-  transition:
-    height 0.2s,
-    font-size 0.2s;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid black; // 1px black border
+    display: block;
+    width: 160px;
+    height: 160px;
+    padding: 0;
+    background-color: white; // White background for the placeholder
+    color: black; // Black text inside the input
 
-  &:focus,
-  &:hover {
-    height: 100px;
-    font-size: 14px;
-  }
+    transition:
+        height 0.2s,
+        font-size 0.2s;
+
+    &:focus,
+    &:hover {
+        background-color: black; // Change background to black on hover
+        color: white; // Change text to white on hover
+        border: 1px solid white; // Optional: Change border to white for contrast
+    }
+    &::placeholder {
+        color: white; // White placeholder text
+        opacity: 1; // Ensure visibility
+    }
 }
 
 .image__img {
@@ -133,7 +262,7 @@
   font-size: 14px;
   color: $placeholder-color;
   background-color: $color-gray;
-  border: 2px dashed $placeholder-color;
+  border: 1px;
   position: absolute;
   top: 0;
   left: 0;
@@ -150,14 +279,15 @@
 
 .image__edit,
 .image__remove {
-  background: #999 no-repeat center center;
-  background-size: 10px 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent !important;
   border: 0;
-  border-radius: 50%;
   padding: 0;
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   top: -10px;
   text-indent: -9999em;
   opacity: 0;
@@ -167,7 +297,7 @@
 
   &:hover,
   &:focus {
-    background-color: #666;
+    background-color: #fff;
   }
 
   .image:hover &,
@@ -177,7 +307,7 @@
 }
 
 .image__edit {
-  background-image: url('../images/resize.svg');
+  background-image: url('../images/edit.svg');
   right: 20px;
 }
 
@@ -195,4 +325,59 @@
   left: 0;
   border-radius: 4px;
   box-shadow: 2px 1px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: center; // Center the logo
+  align-items: center;
+  background-color: black;
+  padding: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-bottom: 0.5px solid white; // Optional white border
+
+  &__center {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo {
+    height: 60px; // Adjust size of the logo
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  padding: 20px;
+  margin-top: 10rem;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  border-top: 1px solid white; // Creates the top border to match the navbar
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 10px; // Space between text and logo
+  }
+
+  &__text {
+    color: white;
+    font-size: 14px;
+  }
+
+  &__logo {
+    height: 60px; // Adjust as needed
+  }
 }

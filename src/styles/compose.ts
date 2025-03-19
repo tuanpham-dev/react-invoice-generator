@@ -4,7 +4,8 @@ import styles from './styles'
 const compose = (classes: string): ReactPDF.Styles => {
   const css: ReactPDF.Styles = {
     //@ts-ignore
-    '@import': 'url(https://fonts.bunny.net/css?family=nunito:400,600)',
+    '@import':
+      'url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..90)',
   }
 
   const classesArray: string[] = classes.replace(/\s+/g, ' ').split(' ')

@@ -126,7 +126,7 @@ const styles: CSSClasses = {
   },
 
   page: {
-    fontFamily: 'Nunito',
+    fontFamily: 'Roboto',
     fontSize: '13px',
     color: '#555',
     padding: '40px 35px',

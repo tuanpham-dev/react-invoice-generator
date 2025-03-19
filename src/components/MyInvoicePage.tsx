@@ -13,14 +13,16 @@ import View from './View'
 import Text from './Text'
 import { Font } from '@react-pdf/renderer'
 import Download from './DownloadPDF'
-import { format } from 'date-fns/format'
+import format  from 'date-fns/format'
 
 Font.register({
-  family: 'Nunito',
+  family: 'Roboto',
   fonts: [
-    { src: 'https://fonts.gstatic.com/s/nunito/v12/XRXV3I6Li01BKofINeaE.ttf' },
     {
-      src: 'https://fonts.gstatic.com/s/nunito/v12/XRXW3I6Li01BKofA6sKUYevN.ttf',
+      src: '/Roboto-VariableFont_wdth,wght.ttf',
+    },
+    {
+      src: '/Roboto-VariableFont_wdth,wght.ttf',
       fontWeight: 600,
     },
   ],
@@ -32,7 +34,7 @@ interface Props {
   onChange?: (invoice: Invoice) => void
 }
 
-const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
+const MyInvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   const [invoice, setInvoice] = useState<Invoice>(data ? { ...data } : { ...initialInvoice })
   const [subTotal, setSubTotal] = useState<number>()
   const [saleTax, setSaleTax] = useState<number>()
@@ -148,19 +150,12 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           <View className="w-50" pdfMode={pdfMode}>
             <EditableFileImage
               className="logo"
-              placeholder="Your Logo"
+              placeholder="LOGO"
               value={invoice.logo}
               width={invoice.logoWidth}
               pdfMode={pdfMode}
               onChangeImage={(value) => handleChange('logo', value)}
               onChangeWidth={(value) => handleChange('logoWidth', value)}
-            />
-            <EditableInput
-              className="fs-20 bold"
-              placeholder="Your Company"
-              value={invoice.companyName}
-              onChange={(value) => handleChange('companyName', value)}
-              pdfMode={pdfMode}
             />
             <EditableInput
               placeholder="Your Name"
@@ -377,7 +372,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
                   title="Remove Row"
                   onClick={() => handleRemove(i)}
                 >
-                  <span className="icon icon-remove bg-red"></span>
+                  <span className="icon icon-remove"></span>
                 </button>
               )}
             </View>
@@ -388,8 +383,7 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
           <View className="w-50 mt-10" pdfMode={pdfMode}>
             {!pdfMode && (
               <button className="link" onClick={handleAdd}>
-                <span className="icon icon-add bg-green mr-10"></span>
-                Add Line Item
+                <span className="icon icon-add  mr-10"></span>
               </button>
             )}
           </View>
@@ -484,4 +478,4 @@ const InvoicePage: FC<Props> = ({ data, pdfMode, onChange }) => {
   )
 }
 
-export default InvoicePage
+export default MyInvoicePage
